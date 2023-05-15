@@ -5,8 +5,9 @@ export default {
       last_name: data.last_name,
       email: data.email
     }
+
     localStorage.setItem('IdentifyData', JSON.stringify(formData))
-    //
+
     context.commit('saveData', formData)
   }
 }

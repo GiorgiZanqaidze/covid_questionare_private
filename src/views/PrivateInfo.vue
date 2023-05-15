@@ -45,9 +45,7 @@
             </button>
           </div>
         </Form>
-        <div>
-          <img src="/identifyImage.png" alt="animation" />
-        </div>
+        <ImageContainer src="/identifyImage.png" />
       </div>
     </div>
   </base-wrapper>
@@ -56,13 +54,15 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import InputField from '../components/forms/inputs/InputField.vue'
+import ImageContainer from '../components/ImageContainer.vue'
 
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    InputField
+    InputField,
+    ImageContainer
   },
 
   computed: {
@@ -97,14 +97,6 @@ export default {
     },
     email() {
       return this.$store.getters['inputs_identify/email']
-    },
-
-    allValue() {
-      return {
-        name: this.name,
-        surname: this.surname,
-        email: this.email
-      }
     }
   },
 
@@ -113,8 +105,8 @@ export default {
       this.$store.dispatch('inputs_identify/saveData', values)
       this.$router.push('/covid-condition')
     },
+
     changeInput(data) {
-      console.log(this.$store.getters['inputs_identify/getLocalData'])
       const prevData = this.$store.getters['inputs_identify/getLocalData']
       this.$store.dispatch('inputs_identify/saveData', {
         ...prevData,

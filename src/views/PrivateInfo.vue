@@ -8,42 +8,36 @@
           :validation-schema="schema"
           class="w-2/5 flex flex-col mt-12 gap-12 relative"
         >
-          <div class="flex flex-col w-3/4 gap-2 relative">
-            <label for="name" class="text-base font-bold tracking-wide">სახელი*</label>
-            <Field
-              id="name"
-              name="name"
-              type="text"
-              class="px-3 py-2 border border-darkGray text-sm"
-              placeholder="იოსებ"
-              v-model="name"
-            />
-            <ErrorMessage name="name" class="text-red-500 absolute top-20 text-sm left-3" />
-          </div>
-          <div class="flex flex-col w-3/4 gap-2 relative">
-            <label for="surname" class="text-base font-bold tracking-wide">გვარი*</label>
-            <Field
-              id="surname"
-              name="surname"
-              type="text"
-              class="px-3 py-2 border border-darkGray text-sm"
-              placeholder="ჯუღაშვილი"
-              v-model="surname"
-            />
-            <ErrorMessage name="surname" class="text-red-500 absolute top-20 text-sm left-3" />
-          </div>
-          <div class="flex flex-col w-3/4 gap-2 relative">
-            <label for="email" class="text-base font-bold tracking-wide">მეილი*</label>
-            <Field
-              id="email"
-              name="email"
-              type="email"
-              class="px-3 py-2 border border-darkGray text-sm"
-              placeholder="fbi@redberry.ge"
-              v-model="email"
-            />
-            <ErrorMessage name="email" class="text-red-500 absolute top-20 text-sm left-3" />
-          </div>
+          <input-field
+            label="სახელი"
+            name="first_name"
+            id="first_name"
+            type="text"
+            placeholder="იოსებ"
+            v-model="first_name"
+            @save-data="changeInput"
+          ></input-field>
+
+          <input-field
+            label="გვარი"
+            name="last_name"
+            id="last_name"
+            type="text"
+            placeholder="ჯუღაშვილი"
+            v-model="last_name"
+            @save-data="changeInput"
+          ></input-field>
+
+          <input-field
+            label="მეილი"
+            name="email"
+            id="email"
+            type="text"
+            placeholder="fbi@redberry.ge"
+            v-model="email"
+            @save-data="changeInput"
+          ></input-field>
+
           <required-inputs></required-inputs>
           <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
             <button class="">
@@ -61,25 +55,27 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
+import InputField from '../components/forms/inputs/InputField.vue'
 
 export default {
   components: {
     Form,
     Field,
-    ErrorMessage
+    ErrorMessage,
+    InputField
   },
 
   computed: {
     schema() {
       return {
-        name: (value) => {
+        first_name: (value) => {
           if (value) {
             return true
           }
 
           return 'სახელის ველი სავალდებულოა'
         },
-        surname: (value) => {
+        last_name: (value) => {
           if (value) {
             return true
           }
@@ -93,14 +89,22 @@ export default {
         }
       }
     },
-    name() {
-      return this.$store.getters['inputs_identify/name']
+    first_name() {
+      return this.$store.getters['inputs_identify/first_name']
     },
-    surname() {
-      return this.$store.getters['inputs_identify/surname']
+    last_name() {
+      return this.$store.getters['inputs_identify/last_name']
     },
     email() {
       return this.$store.getters['inputs_identify/email']
+    },
+
+    allValue() {
+      return {
+        name: this.name,
+        surname: this.surname,
+        email: this.email
+      }
     }
   },
 
@@ -108,6 +112,14 @@ export default {
     onSubmit(values) {
       this.$store.dispatch('inputs_identify/saveData', values)
       this.$router.push('/covid-condition')
+    },
+    changeInput(data) {
+      console.log(this.$store.getters['inputs_identify/getLocalData'])
+      const prevData = this.$store.getters['inputs_identify/getLocalData']
+      this.$store.dispatch('inputs_identify/saveData', {
+        ...prevData,
+        [data.name]: data.value
+      })
     }
   },
 

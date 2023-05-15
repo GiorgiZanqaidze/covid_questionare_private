@@ -1,7 +1,7 @@
 export default {
   saveData(state, payload) {
-    state.inputs.name = payload.name
-    state.inputs.surname = payload.surname
+    state.inputs.first_name = payload.first_name
+    state.inputs.last_name = payload.last_name
     state.inputs.email = payload.email
     // state.inputs = { ...payload }
   }

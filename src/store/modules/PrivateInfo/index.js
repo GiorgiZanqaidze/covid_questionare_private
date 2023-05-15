@@ -7,8 +7,8 @@ export default {
   state() {
     return {
       inputs: {
-        name: '',
-        surname: '',
+        first_name: '',
+        last_name: '',
         email: ''
       }
     }

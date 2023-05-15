@@ -83,26 +83,27 @@
           </div>
           <div v-if="vaccineOption">
             <div class="flex flex-col w-3/4 gap-2 relative">
-              <h1 for="number" class="text-sm font-bold" v-if="vaccineOption === 'false'">
+              <h1 class="text-sm font-bold" v-if="vaccineOption === 'false'">
                 მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
               </h1>
-              <h1 for="number" class="text-sm font-bold" v-if="vaccineOption === 'true'">
+              <h1 class="text-sm font-bold" v-if="vaccineOption === 'true'">
                 თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
               </h1>
               <Field
-                id="number"
-                name="number"
-                type="date"
+                id="date"
+                name="date"
+                type="text"
+                placeholder="დდ/თთ/წწ"
                 class="px-3 py-2 border border-darkGray text-sm inline-block ml-3"
-                v-model="number"
+                v-model="date"
               />
-              <ErrorMessage name="number" class="text-red-500 absolute top-20 text-sm left-3" />
+              <ErrorMessage name="date" class="text-red-500 absolute top-20 text-sm left-3" />
               <Field
                 id="number"
                 name="number"
                 type="number"
                 class="px-3 py-2 border border-darkGray text-sm inline-block ml-3"
-                placeholder="რიცხვი"
+                placeholder="ანტისხეულების რაოდენობა"
                 v-model="number"
                 v-if="vaccineOption === 'true'"
               />

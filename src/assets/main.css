@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'arial';
+  src: url('../assets/fonts/bpg_arial_2009.ttf');
+}

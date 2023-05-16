@@ -3,21 +3,18 @@
     <div class="mt-12">
       <form-header :page="2"></form-header>
       <div class="flex justify-center">
-        <Form
-          @submit="onSubmit"
-          :validation-schema="schema"
-          class="w-2/5 flex flex-col mt-12 gap-12 relative"
-        >
+        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12 relative">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">გაქვს გადატანილი Covid-19?*</h1>
 
             <div class="inline-block ml-3">
               <Field
+                rules="required"
                 id="covid_yes"
                 name="condition"
                 type="radio"
                 value="covid_yes"
-                class="inline"
+                class="inline accent-darkGray"
                 v-model="selectedOption"
                 @change="changeCondition"
               />
@@ -25,11 +22,12 @@
             </div>
             <div class="inline-block ml-3">
               <Field
+                rules="required"
                 id="covid_no"
                 name="condition"
                 type="radio"
                 value="covid_no"
-                class="inline"
+                class="inline accent-darkGray"
                 v-model="selectedOption"
                 @change="changeCondition"
               />
@@ -37,11 +35,12 @@
             </div>
             <div class="inline-block ml-3">
               <Field
+                rules="required"
                 id="covid_now"
                 name="condition"
                 type="radio"
                 value="covid_now"
-                class="inline"
+                class="inline accent-darkGray"
                 v-model="selectedOption"
                 @change="changeCondition"
               />
@@ -59,9 +58,10 @@
                 name="vaccine_condition"
                 type="radio"
                 value="true"
-                class="inline"
+                class="inline accent-darkGray"
                 v-model="vaccineOption"
                 @change="changeCondition"
+                rules="required"
               />
               <label for="vaccine_yes" class="inline-block ml-6">კი</label>
             </div>
@@ -71,9 +71,10 @@
                 name="vaccine_condition"
                 type="radio"
                 value="false"
-                class="inline"
+                class="inline accent-darkGray"
                 v-model="vaccineOption"
                 @change="changeCondition"
+                rules="required"
               />
               <label for="vaccine_no" class="inline-block ml-6">არა</label>
             </div>
@@ -96,6 +97,7 @@
               placeholder="დდ/თთ/წწ"
               class="px-3 py-2 border border-darkGray text-sm inline-block ml-3"
               v-model="date"
+              rules="required"
             />
             <Field
               id="number"
@@ -105,6 +107,7 @@
               placeholder="ანტისხეულების რაოდენობა"
               v-model="number"
               v-if="vaccineOption === 'true'"
+              rules="required"
             />
             <ErrorMessage
               name="number"
@@ -139,22 +142,6 @@ export default {
   },
 
   computed: {
-    schema() {
-      return {
-        condition: (value) => {
-          if (value) {
-            return true
-          }
-          return 'არსებული ველი სავალდებულოა'
-        },
-        vaccine_condition: (value) => {
-          if (this.selectedOption === 'covid_yes' && !value) {
-            return 'არსებული ველი სავალდებულოა'
-          }
-          return true
-        }
-      }
-    },
     selectedOption() {
       return this.$store.getters['inputs_covid_condition/selectedOption']
     },

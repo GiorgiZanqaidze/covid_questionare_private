@@ -13,7 +13,7 @@
                 type="radio"
                 value="true"
                 class="inline"
-                v-model="selectedOption"
+                v-model="had_vaccine"
                 @change="changeCondition"
                 rules="required"
               />
@@ -26,13 +26,13 @@
                 type="radio"
                 value="false"
                 class="inline"
-                v-model="selectedOption"
+                v-model="had_vaccine"
                 @change="changeCondition"
                 rules="required"
               />
               <label for="vaccine_no" class="inline-block ml-6">არა</label>
             </div>
-            <ErrorMessage name="condition" class="text-red-500 absolute text-sm left-3 top-32" />
+            <ErrorMessage name="had_vaccine" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
           <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
             <router-link to="covid-condition" class="translate-x-2/4">
@@ -57,6 +57,34 @@ export default {
     Field,
     ErrorMessage,
     ImageContainer
+  },
+
+  computed: {
+    had_vaccine() {
+      return this.$store.getters['inputs_vaccine_condition/had_vaccine']
+    }
+  },
+
+  methods: {
+    onSubmit(values) {
+      this.$store.dispatch('inputs_vaccine_condition/saveData', values)
+    },
+    changeCondition(e) {
+      console.log(this.allInputs)
+      this.$store.dispatch('inputs_vaccine_condition/saveData', {
+        ...this.allInputs,
+        [e.target.name]: e.target.value
+      })
+    }
+  },
+
+  created() {
+    const data = JSON.parse(localStorage.getItem('VaccineCondition'))
+    console.log(data)
+    this.had_vaccine = data.had_vaccine
+    if (data) {
+      this.$store.dispatch('inputs_vaccine_condition/saveData', data)
+    }
   }
 }
 </script>

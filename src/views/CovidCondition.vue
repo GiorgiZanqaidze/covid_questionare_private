@@ -48,7 +48,7 @@
             </div>
             <ErrorMessage name="condition" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
-          <div v-if="selectedOption === 'covid_yes'" class="flex flex-col w-3/4 gap-2 relative">
+          <div v-if="isCovidTrue" class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">
               ანტისხეულების ტესტი გაქვს გაკეთებული?*
             </h1>
@@ -83,37 +83,46 @@
               class="text-red-500 absolute text-sm left-3 top-32"
             />
           </div>
-          <div class="flex flex-col w-3/4 gap-2 relative" v-if="vaccineOption">
-            <h1 class="text-sm font-bold" v-if="vaccineOption === 'false'">
-              მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
-            </h1>
-            <h1 class="text-sm font-bold" v-if="vaccineOption === 'true'">
-              თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
-            </h1>
-            <Field
-              id="date"
-              name="date"
-              type="text"
-              placeholder="დდ/თთ/წწ"
-              class="px-3 py-2 border border-darkGray text-sm inline-block ml-3"
-              v-model="date"
-              rules="required"
-            />
-            <Field
-              id="number"
-              name="number"
-              type="number"
-              class="px-3 py-2 border border-darkGray text-sm inline-block ml-3"
-              placeholder="ანტისხეულების რაოდენობა"
-              v-model="number"
-              v-if="vaccineOption === 'true'"
-              rules="required"
-            />
-            <ErrorMessage
-              name="number"
-              class="text-red-500 absolute top-20 text-sm left-3"
-              v-if="vaccineOption === 'true'"
-            />
+          <div class="flex flex-col w-4/5 gap-2 relative box-border">
+            <div v-if="vaccineOption === 'true'">
+              <label for="test_date" class="font-bold w-full">
+                მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
+              </label>
+              <Field
+                id="test_date"
+                name="test_date"
+                type="text"
+                placeholder="დდ/თთ/წწ"
+                class="px-3 py-2 border border-darkGray text-sm inline-block ml-3 w-full mt-4"
+                v-model="test_date"
+                @input="changeCondition"
+              />
+              <Field
+                id="number"
+                name="number"
+                type="number"
+                placeholder="ანტისხეულების რაოდენობა"
+                class="px-3 py-2 border border-darkGray text-sm inline-block ml-3 w-full mt-4"
+                v-model="number"
+                @input="changeCondition"
+              />
+            </div>
+            <div v-if="vaccineOption === 'false'">
+              <label for="test_date" class="font-bold w-full">
+                თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
+              </label>
+              <Field
+                id="test_date"
+                name="test_date"
+                type="text"
+                class="px-3 py-2 border border-darkGray text-sm inline-block ml-3 w-full mt-4"
+                placeholder="დდ/თთ/წწ"
+                v-model="test_date"
+                rules="required"
+                @input="changeCondition"
+              />
+              <ErrorMessage name="test_date" class="text-red-500 absolute text-sm left-3 top-32" />
+            </div>
           </div>
           <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
             <router-link to="identify" class="translate-x-2/4">
@@ -124,9 +133,7 @@
             </button>
           </div>
         </Form>
-        <div>
-          <img src="/CovidConditionImage.png" alt="animation" />
-        </div>
+        <ImageContainer src="/CovidConditionImage.png" />
       </div>
     </div>
   </base-wrapper>
@@ -134,30 +141,47 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
+import ImageContainer from '../components/ImageContainer.vue'
 export default {
   components: {
     Form,
     Field,
-    ErrorMessage
+    ErrorMessage,
+    ImageContainer
   },
 
   computed: {
     selectedOption() {
       return this.$store.getters['inputs_covid_condition/selectedOption']
     },
+    isCovidTrue() {
+      return this.selectedOption === 'covid_yes'
+    },
     vaccineOption() {
       return this.$store.getters['inputs_covid_condition/vaccineOption']
     },
+
+    test_date() {
+      return this.$store.getters['inputs_covid_condition/test_date']
+    },
+
+    number() {
+      return this.$store.getters['inputs_covid_condition/number']
+    },
+
     allInputs() {
       return {
         condition: this.selectedOption,
-        vaccine_condition: this.vaccine_condition
+        vaccine_condition: this.vaccine_condition,
+        test_date: this.test_date,
+        number: this.number
       }
     }
   },
 
   created() {
     const data = JSON.parse(localStorage.getItem('CovidCondition'))
+
     if (data) {
       this.$store.dispatch('inputs_covid_condition/saveData', data)
     }
@@ -171,6 +195,7 @@ export default {
     changeCondition(e) {
       this.$store.dispatch('inputs_covid_condition/saveData', {
         ...this.allInputs,
+        vaccine_condition: this.vaccineOption,
         [e.target.name]: e.target.value
       })
     }

@@ -8,7 +8,9 @@ export default {
     return {
       inputs: {
         selectedOption: null,
-        vaccineOption: null
+        vaccineOption: null,
+        test_date: null,
+        number: null
       }
     }
   },

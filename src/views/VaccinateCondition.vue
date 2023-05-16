@@ -3,34 +3,32 @@
     <div class="mt-12">
       <form-header :page="3"></form-header>
       <div class="flex justify-between w-full">
-        <Form
-          @submit="onSubmit"
-          :validation-schema="schema"
-          class="w-2/5 flex flex-col mt-12 gap-12 relative"
-        >
+        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12 relative">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">უკვე აცრილი ხარ?*</h1>
             <div class="inline-block ml-3">
               <Field
                 id="vaccine_yes"
-                name="condition"
+                name="had_vaccine"
                 type="radio"
-                value="vaccine_yes"
+                value="true"
                 class="inline"
                 v-model="selectedOption"
                 @change="changeCondition"
+                rules="required"
               />
               <label for="vaccine_yes" class="inline-block ml-6">კი</label>
             </div>
             <div class="inline-block ml-3">
               <Field
                 id="vaccine_no"
-                name="condition"
+                name="had_vaccine"
                 type="radio"
-                value="vaccine_no"
+                value="false"
                 class="inline"
                 v-model="selectedOption"
                 @change="changeCondition"
+                rules="required"
               />
               <label for="vaccine_no" class="inline-block ml-6">არა</label>
             </div>
@@ -44,9 +42,7 @@
               <img src="/Vector_right.png" alt="vector_right" />
             </button></div
         ></Form>
-        <div>
-          <img src="/VaccineConditionImage.png" alt="animation" />
-        </div>
+        <ImageContainer src="/VaccineConditionImage.png" />
       </div>
     </div>
   </base-wrapper>
@@ -54,11 +50,13 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
+import ImageContainer from '../components/ImageContainer.vue'
 export default {
   components: {
     Form,
     Field,
-    ErrorMessage
+    ErrorMessage,
+    ImageContainer
   }
 }
 </script>

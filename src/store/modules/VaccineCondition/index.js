@@ -7,7 +7,8 @@ export default {
   state() {
     return {
       inputs: {
-        had_vaccine: null
+        had_vaccine: null,
+        vaccination_stage: null
       }
     }
   },

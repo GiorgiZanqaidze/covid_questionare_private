@@ -7,6 +7,8 @@ import BaseWrapper from './components/BaseWrapper.vue'
 import FormHeader from './components/forms/FormHeader.vue'
 import RequiredInputsSign from './components/forms/RequiredInputsSign.vue'
 
+import './config/vee-validate/rules'
+
 const app = createApp(App)
 app.component('base-wrapper', BaseWrapper)
 app.component('form-header', FormHeader)

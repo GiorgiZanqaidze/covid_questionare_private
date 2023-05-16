@@ -3,11 +3,7 @@
     <div class="mt-12">
       <form-header :page="1"></form-header>
       <div class="flex">
-        <Form
-          @submit="onSubmit"
-          :validation-schema="schema"
-          class="w-2/5 flex flex-col mt-12 gap-12 relative"
-        >
+        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12 relative">
           <input-field
             label="სახელი"
             name="first_name"
@@ -16,6 +12,7 @@
             placeholder="იოსებ"
             v-model="first_name"
             @save-data="changeInput"
+            rules="required|min_length:3"
           ></input-field>
 
           <input-field
@@ -26,6 +23,7 @@
             placeholder="ჯუღაშვილი"
             v-model="last_name"
             @save-data="changeInput"
+            rules="required|min_length:3"
           ></input-field>
 
           <input-field
@@ -36,6 +34,7 @@
             placeholder="fbi@redberry.ge"
             v-model="email"
             @save-data="changeInput"
+            rules="required|redberry_email"
           ></input-field>
 
           <required-inputs></required-inputs>
@@ -52,43 +51,18 @@
 </template>
 
 <script>
-import { Form, Field, ErrorMessage } from 'vee-validate'
+import { Form } from 'vee-validate'
 import InputField from '../components/forms/inputs/InputField.vue'
 import ImageContainer from '../components/ImageContainer.vue'
 
 export default {
   components: {
     Form,
-    Field,
-    ErrorMessage,
     InputField,
     ImageContainer
   },
 
   computed: {
-    schema() {
-      return {
-        first_name: (value) => {
-          if (value) {
-            return true
-          }
-
-          return 'სახელის ველი სავალდებულოა'
-        },
-        last_name: (value) => {
-          if (value) {
-            return true
-          }
-          return 'გვარის ველი სავალდებულოა'
-        },
-        email: (value) => {
-          if (value) {
-            return true
-          }
-          return 'მეილის ველი არის სავალდებულო'
-        }
-      }
-    },
     first_name() {
       return this.$store.getters['inputs_identify/first_name']
     },

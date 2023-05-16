@@ -11,53 +11,30 @@ import { required, email, min, alpha } from '@vee-validate/rules' // npm install
 defineRule('required', required)
 defineRule('email', email)
 defineRule('min', min)
-defineRule('alpha', alpha)
 
-// ===============================================================================================
-// ===============================================================================================
-//  strategy #2
-//                      Or you can also globally define all the available rules
-//                              in the @vee-validate/rules package:
-// ===============================================================================================
-// ===============================================================================================
+defineRule('required', (value) => {
+  if (!value || !value.length) {
+    return 'ველის შევსება სავალდებულოა'
+  }
+  return true
+})
+
+defineRule('redberry_email', (value) => {
+  if (!/^[a-zA-Z0-9.]+@redberry.ge$/.test(value)) {
+    return 'უნდა აკმაყოფილებდეს რედბერის მეილის ფორმატს'
+  }
+  return true
+})
+
 //
-//        import { defineRule } from 'vee-validate';
-//        import AllRules from '@vee-validate/rules';
-//
-//        Object.keys(AllRules).forEach(rule => {
-//            defineRule(rule, AllRules[rule]);
-//        });
-//
-//
-//
-// ===============================================================================================
-// ===============================================================================================
-//   strategy #3
-//                                You can also declare your custom rules:
-//                      [!] note: name of the rule should be in snake_case format
-// ===============================================================================================
-// ===============================================================================================
-//
-//
-//      defineRule('required', value => {
-//          if (!value || !value.length) {
-//              return 'This field is required';
-//          }
-//          return true;
-//      });
-//
-//      defineRule('min_length', (value, [limit]) => {
-//          // The field is empty so it should pass
-//          if (!value || !value.length) {
-//              return true;
-//          }
-//
-//          if (value.length < limit) {
-//              return `This field must be at least ${limit} characters`;
-//          }
-//
-//          return true;
-//      });
-//
-// ===============================================================================================
-// ===============================================================================================
+defineRule('min_length', (value, [limit]) => {
+  if (!value || !value.length) {
+    return true
+  }
+
+  if (value.length < limit) {
+    return `ველი უნდა შეიცავდეს მინიმუმ ${limit} სიმბოლოს`
+  }
+
+  return true
+})

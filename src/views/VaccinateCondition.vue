@@ -215,6 +215,7 @@ export default {
   methods: {
     onSubmit(values) {
       this.$store.dispatch('inputs_vaccine_condition/saveData', values)
+      this.$router.push('/suggestions')
     },
     changeInput(e) {
       this.$store.dispatch('inputs_vaccine_condition/saveData', {

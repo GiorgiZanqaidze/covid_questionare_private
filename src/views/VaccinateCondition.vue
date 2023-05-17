@@ -1,9 +1,9 @@
 <template>
   <base-wrapper>
-    <div class="mt-12">
+    <div class="my-12">
       <form-header :page="3"></form-header>
-      <div class="flex justify-between w-full">
-        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12 relative">
+      <div class="flex justify-between w-full relative">
+        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">უკვე აცრილი ხარ?*</h1>
             <div class="inline-block ml-3">
@@ -168,11 +168,11 @@
             </p>
           </div>
 
-          <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
-            <router-link to="covid-condition" class="translate-x-2/4">
+          <div class="absolute bottom-0 left-1/2 flex gap-32" style="transform: translateX(-50%)">
+            <router-link to="covid-condition">
               <img src="/Vector_left.png" alt="vector_left"
             /></router-link>
-            <button class="translate-x-2/4">
+            <button>
               <img src="/Vector_right.png" alt="vector_right" />
             </button></div
         ></Form>

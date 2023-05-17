@@ -1,9 +1,9 @@
 <template>
   <base-wrapper>
-    <div class="mt-12">
+    <div class="my-12">
       <form-header :page="4"></form-header>
-      <div class="flex justify-between mb-14">
-        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12 relative">
+      <div class="flex justify-between mb-14 relative">
+        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12">
           <div class="flex flex-col w-[606px] gap-2 relative">
             <div class="mb-4">
               <p>
@@ -195,6 +195,17 @@
               v-model="tell_us_your_opinion_about_us"
               @change="changeInputs"
             ></textarea>
+          </div>
+          <div class="flex justify-end">
+            <button class="bg-darkBlue px-5 py-3 rounded-[42px] text-white text-sm font-semibold">
+              დასრულება
+            </button>
+          </div>
+
+          <div class="absolute left-1/2" style="bottom: -80px">
+            <router-link to="/vaccine-condition">
+              <img src="/Vector_left.png" alt="vector_left"
+            /></router-link>
           </div>
         </Form>
         <ImageContainer src="/bike.png" class="w-[703px]" />

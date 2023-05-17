@@ -1,9 +1,9 @@
 <template>
   <base-wrapper>
-    <div class="mt-12">
+    <div class="my-12">
       <form-header :page="1"></form-header>
-      <div class="flex">
-        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12 relative">
+      <div class="flex relative">
+        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12">
           <input-field
             label="სახელი"
             name="first_name"
@@ -38,8 +38,8 @@
           ></input-field>
 
           <required-inputs></required-inputs>
-          <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
-            <button class="">
+          <div class="absolute bottom-0 left-1/2 flex" style="transform: translateX(-50%)">
+            <button>
               <img src="/Vector_right.png" alt="vector_right" />
             </button>
           </div>

@@ -2,8 +2,8 @@
   <base-wrapper>
     <div class="mt-12">
       <form-header :page="2"></form-header>
-      <div class="flex justify-center">
-        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12 relative">
+      <div class="flex justify-between">
+        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12 relative">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">გაქვს გადატანილი Covid-19?*</h1>
 
@@ -14,7 +14,7 @@
                 name="condition"
                 type="radio"
                 value="covid_yes"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="selectedOption"
                 @change="changeCondition"
               />
@@ -27,7 +27,7 @@
                 name="condition"
                 type="radio"
                 value="covid_no"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="selectedOption"
                 @change="changeCondition"
               />
@@ -40,7 +40,7 @@
                 name="condition"
                 type="radio"
                 value="covid_now"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="selectedOption"
                 @change="changeCondition"
               />
@@ -58,7 +58,7 @@
                 name="vaccine_condition"
                 type="radio"
                 value="true"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="vaccineOption"
                 @change="changeCondition"
                 rules="required"
@@ -71,7 +71,7 @@
                 name="vaccine_condition"
                 type="radio"
                 value="false"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="vaccineOption"
                 @change="changeCondition"
                 rules="required"
@@ -133,7 +133,7 @@
             </button>
           </div>
         </Form>
-        <ImageContainer src="/CovidConditionImage.png" />
+        <ImageContainer src="/CovidConditionImage.png" class="w-[870px]" />
       </div>
     </div>
   </base-wrapper>

@@ -12,9 +12,9 @@
                 name="had_vaccine"
                 type="radio"
                 value="true"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="had_vaccine"
-                @change="changeCondition"
+                @change="changeInput"
                 rules="required"
               />
               <label for="vaccine_yes" class="inline-block ml-6">კი</label>
@@ -25,16 +25,16 @@
                 name="had_vaccine"
                 type="radio"
                 value="false"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="had_vaccine"
-                @change="changeCondition"
+                @change="changeInput"
                 rules="required"
               />
               <label for="vaccine_no" class="inline-block ml-6">არა</label>
             </div>
             <ErrorMessage name="had_vaccine" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
-          <div class="flex flex-col w-full gap-2 relative">
+          <div v-if="had_vaccine_true" class="flex flex-col w-full gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">აირჩიე რა ეტაპზე ხარ*</h1>
             <div class="inline-block ml-3">
               <Field
@@ -42,9 +42,9 @@
                 name="vaccination_stage"
                 type="radio"
                 value="first_dosage_and_registered_on_the_second"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="vaccination_stage"
-                @change="changeCondition"
+                @change="changeInput"
                 rules="required"
               />
               <label for="first_dose" class="inline-block ml-6"
@@ -57,9 +57,9 @@
                 name="vaccination_stage"
                 type="radio"
                 value="fully_vaccinated"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="vaccination_stage"
-                @change="changeCondition"
+                @change="changeInput"
                 rules="required"
               />
               <label for="full_dose" class="inline-block ml-6">სრულად აცრილი ვარ</label>
@@ -70,9 +70,9 @@
                 name="vaccination_stage"
                 type="radio"
                 value="first_dosage_and_not_registered_on_the_second"
-                class="inline accent-darkGray"
+                class="inline accent-darkGray scale-150"
                 v-model="vaccination_stage"
-                @change="changeCondition"
+                @change="changeInput"
                 rules="required"
               />
               <label for="not_registered" class="inline-block ml-6"
@@ -84,6 +84,90 @@
               class="text-red-500 absolute text-sm left-3 top-32"
             />
           </div>
+          <div v-else class="flex flex-col w-full gap-2 relative">
+            <h1 class="text-base font-bold tracking-wide">რას ელოდები?*</h1>
+            <div class="inline-block ml-3">
+              <Field
+                id="registered_and_waiting"
+                name="vaccination_stage"
+                type="radio"
+                value="registered_and_waiting"
+                class="inline accent-darkGray scale-150"
+                v-model="vaccination_stage"
+                @change="changeInput"
+                rules="required"
+              />
+              <label for="registered_and_waiting" class="inline-block ml-6"
+                >დარეგისტრირებული ვარ და ველოდები რიცხვს</label
+              >
+            </div>
+            <div class="inline-block ml-3">
+              <Field
+                id="not_interested"
+                name="vaccination_stage"
+                type="radio"
+                value="not_interested"
+                class="inline accent-darkGray scale-150"
+                v-model="vaccination_stage"
+                @change="changeInput"
+                rules="required"
+              />
+              <label for="not_interested" class="inline-block ml-6">არ ვგეგმავ</label>
+            </div>
+            <div class="inline-block ml-3">
+              <Field
+                id="get_over_and_have_plan_to_register"
+                name="vaccination_stage"
+                type="radio"
+                value="get_over_and_have_plan_to_register"
+                class="inline accent-darkGray scale-150"
+                v-model="vaccination_stage"
+                @change="changeInput"
+                rules="required"
+              />
+              <label for="get_over_and_have_plan_to_register" class="inline-block ml-6"
+                >გადატანილი მაქვს და ვგეგმავ აცრას</label
+              >
+            </div>
+            <ErrorMessage
+              name="vaccination_stage"
+              class="text-red-500 absolute text-sm left-3 top-32"
+            />
+          </div>
+          <div
+            v-if="
+              vaccination_stage === 'first_dosage_and_not_registered_on_the_second' &&
+              had_vaccine_true
+            "
+          >
+            <p class="ml-3 w-3/4">
+              რომ არ გადადო, ბარემ ახლავე დარეგისტრირდი <br />
+              <a href="https://booking.moh.gov.ge/" class="text-darkBlue"
+                >https://booking.moh.gov.ge/</a
+              >
+            </p>
+          </div>
+          <div v-if="vaccination_stage === 'not_interested' && !had_vaccine_true">
+            <p class="ml-3 w-3/4">
+              <a href="https://booking.moh.gov.ge/" class="text-darkBlue inline-block mt-3"
+                >👉 https://booking.moh.gov.ge/</a
+              >
+            </p>
+          </div>
+          <div
+            v-if="vaccination_stage === 'get_over_and_have_plan_to_register' && !had_vaccine_true"
+          >
+            <p class="ml-3 w-3/4">
+              ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.<br />
+              <span class="mt-4 inline-block"
+                >👉 რეგისტრაციის ბმული
+                <a href="https://booking.moh.gov.ge/" class="text-darkBlue"
+                  >https://booking.moh.gov.ge/</a
+                ></span
+              >
+            </p>
+          </div>
+
           <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
             <router-link to="covid-condition" class="translate-x-2/4">
               <img src="/Vector_left.png" alt="vector_left"
@@ -92,7 +176,7 @@
               <img src="/Vector_right.png" alt="vector_right" />
             </button></div
         ></Form>
-        <ImageContainer src="/VaccineConditionImage.png" clas="w-[783px]" />
+        <ImageContainer src="/VaccineConditionImage.png" class="w-[783px]" />
       </div>
     </div>
   </base-wrapper>
@@ -113,9 +197,13 @@ export default {
     had_vaccine() {
       return this.$store.getters['inputs_vaccine_condition/had_vaccine']
     },
+    had_vaccine_true() {
+      return this.had_vaccine === 'true'
+    },
     vaccination_stage() {
       return this.$store.getters['inputs_vaccine_condition/vaccination_stage']
     },
+
     allInputs() {
       return {
         had_vaccine: this.had_vaccine,
@@ -128,7 +216,7 @@ export default {
     onSubmit(values) {
       this.$store.dispatch('inputs_vaccine_condition/saveData', values)
     },
-    changeCondition(e) {
+    changeInput(e) {
       this.$store.dispatch('inputs_vaccine_condition/saveData', {
         ...this.allInputs,
         [e.target.name]: e.target.value

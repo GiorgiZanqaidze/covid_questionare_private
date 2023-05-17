@@ -1,12 +1,13 @@
 export default {
   saveData(context, data) {
     const formData = {
-      name: data.name,
-      surname: data.surname,
+      first_name: data.first_name,
+      last_name: data.last_name,
       email: data.email
     }
-    localStorage.setItem('IdentifyData', JSON.stringify(data))
-    //
+
+    localStorage.setItem('IdentifyData', JSON.stringify(formData))
+
     context.commit('saveData', formData)
   }
 }

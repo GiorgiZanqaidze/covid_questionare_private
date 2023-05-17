@@ -4,5 +4,11 @@ export default {
   },
   vaccineOption(state) {
     return state.inputs.vaccineOption
+  },
+  test_date(state) {
+    return state.inputs.test_date
+  },
+  number(state) {
+    return state.inputs.number
   }
 }

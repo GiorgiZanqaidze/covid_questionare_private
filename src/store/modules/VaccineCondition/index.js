@@ -7,10 +7,8 @@ export default {
   state() {
     return {
       inputs: {
-        selectedOption: null,
-        vaccineOption: null,
-        test_date: null,
-        number: null
+        had_vaccine: null,
+        vaccination_stage: null
       }
     }
   },

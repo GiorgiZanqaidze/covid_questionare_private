@@ -1,11 +1,15 @@
 export default {
-  name(state) {
-    return state.inputs.name
+  first_name(state) {
+    return state.inputs.first_name
   },
-  surname(state) {
-    return state.inputs.surname
+  last_name(state) {
+    return state.inputs.last_name
   },
   email(state) {
     return state.inputs.email
+  },
+
+  getLocalData() {
+    return JSON.parse(localStorage.getItem('IdentifyData'))
   }
 }

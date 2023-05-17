@@ -4,5 +4,8 @@ export default {
   },
   vaccination_stage(state) {
     return state.inputs.vaccination_stage
+  },
+  i_am_waiting(state) {
+    return state.inputs.i_am_waiting
   }
 }

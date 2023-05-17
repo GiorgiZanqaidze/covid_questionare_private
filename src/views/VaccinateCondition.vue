@@ -69,7 +69,7 @@
                 id="not_registered"
                 name="vaccination_stage"
                 type="radio"
-                value="first_dosage_and_not_registered_on_the_second"
+                value="first_dosage_and_not_registered_yet"
                 class="inline accent-darkGray scale-150"
                 v-model="vaccination_stage"
                 @change="changeInput"
@@ -89,11 +89,11 @@
             <div class="inline-block ml-3">
               <Field
                 id="registered_and_waiting"
-                name="vaccination_stage"
+                name="i_am_waiting"
                 type="radio"
                 value="registered_and_waiting"
                 class="inline accent-darkGray scale-150"
-                v-model="vaccination_stage"
+                v-model="i_am_waiting"
                 @change="changeInput"
                 rules="required"
               />
@@ -103,29 +103,29 @@
             </div>
             <div class="inline-block ml-3">
               <Field
-                id="not_interested"
-                name="vaccination_stage"
+                id="not_planning"
+                name="i_am_waiting"
                 type="radio"
-                value="not_interested"
+                value="not_planning"
                 class="inline accent-darkGray scale-150"
-                v-model="vaccination_stage"
+                v-model="i_am_waiting"
                 @change="changeInput"
                 rules="required"
               />
-              <label for="not_interested" class="inline-block ml-6">არ ვგეგმავ</label>
+              <label for="not_planning" class="inline-block ml-6">არ ვგეგმავ</label>
             </div>
             <div class="inline-block ml-3">
               <Field
-                id="get_over_and_have_plan_to_register"
-                name="vaccination_stage"
+                id="had_covid_and_planning_to_be_vaccinated"
+                name="i_am_waiting"
                 type="radio"
-                value="get_over_and_have_plan_to_register"
+                value="had_covid_and_planning_to_be_vaccinated"
                 class="inline accent-darkGray scale-150"
-                v-model="vaccination_stage"
+                v-model="i_am_waiting"
                 @change="changeInput"
                 rules="required"
               />
-              <label for="get_over_and_have_plan_to_register" class="inline-block ml-6"
+              <label for="had_covid_and_planning_to_be_vaccinated" class="inline-block ml-6"
                 >გადატანილი მაქვს და ვგეგმავ აცრას</label
               >
             </div>
@@ -136,8 +136,7 @@
           </div>
           <div
             v-if="
-              vaccination_stage === 'first_dosage_and_not_registered_on_the_second' &&
-              had_vaccine_true
+              vaccination_stage === 'first_dosage_and_registered_on_the_second' && had_vaccine_true
             "
           >
             <p class="ml-3 w-3/4">
@@ -147,7 +146,7 @@
               >
             </p>
           </div>
-          <div v-if="vaccination_stage === 'not_interested' && !had_vaccine_true">
+          <div v-if="i_am_waiting === 'not_planning' && !had_vaccine_true">
             <p class="ml-3 w-3/4">
               <a href="https://booking.moh.gov.ge/" class="text-darkBlue inline-block mt-3"
                 >👉 https://booking.moh.gov.ge/</a
@@ -155,7 +154,7 @@
             </p>
           </div>
           <div
-            v-if="vaccination_stage === 'get_over_and_have_plan_to_register' && !had_vaccine_true"
+            v-if="i_am_waiting === 'had_covid_and_planning_to_be_vaccinated' && !had_vaccine_true"
           >
             <p class="ml-3 w-3/4">
               ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.<br />
@@ -203,11 +202,15 @@ export default {
     vaccination_stage() {
       return this.$store.getters['inputs_vaccine_condition/vaccination_stage']
     },
+    i_am_waiting() {
+      return this.$store.getters['inputs_vaccine_condition/i_am_waiting']
+    },
 
     allInputs() {
       return {
         had_vaccine: this.had_vaccine,
-        vaccination_stage: this.vaccination_stage
+        vaccination_stage: this.vaccination_stage,
+        i_am_waiting: this.i_am_waiting
       }
     }
   },

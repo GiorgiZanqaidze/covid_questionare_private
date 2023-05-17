@@ -10,41 +10,41 @@
             <div class="inline-block ml-3">
               <Field
                 rules="required"
-                id="covid_yes"
-                name="condition"
+                id="yes"
+                name="had_covid"
                 type="radio"
-                value="covid_yes"
+                value="yes"
                 class="inline accent-darkGray scale-150"
-                v-model="selectedOption"
+                v-model="had_covid"
                 @change="changeCondition"
               />
-              <label for="covid_yes" class="inline-block ml-6">კი</label>
+              <label for="yes" class="inline-block ml-6">კი</label>
             </div>
             <div class="inline-block ml-3">
               <Field
                 rules="required"
-                id="covid_no"
-                name="condition"
+                id="no"
+                name="had_covid"
                 type="radio"
-                value="covid_no"
+                value="no"
                 class="inline accent-darkGray scale-150"
-                v-model="selectedOption"
+                v-model="had_covid"
                 @change="changeCondition"
               />
-              <label for="covid_no" class="inline-block ml-6">არა</label>
+              <label for="no" class="inline-block ml-6">არა</label>
             </div>
             <div class="inline-block ml-3">
               <Field
                 rules="required"
-                id="covid_now"
-                name="condition"
+                id="have_right_now"
+                name="had_covid"
                 type="radio"
-                value="covid_now"
+                value="have_right_now"
                 class="inline accent-darkGray scale-150"
-                v-model="selectedOption"
+                v-model="had_covid"
                 @change="changeCondition"
               />
-              <label for="covid_now" class="inline-block ml-6">ახლა მაქვს</label>
+              <label for="have_right_now" class="inline-block ml-6">ახლა მაქვს</label>
             </div>
             <ErrorMessage name="condition" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
@@ -55,11 +55,11 @@
             <div class="inline-block ml-3">
               <Field
                 id="vaccine_yes"
-                name="vaccine_condition"
+                name="had_antibody_test"
                 type="radio"
                 value="true"
                 class="inline accent-darkGray scale-150"
-                v-model="vaccineOption"
+                v-model="had_antibody_test"
                 @change="changeCondition"
                 rules="required"
               />
@@ -68,23 +68,23 @@
             <div class="inline-block ml-3">
               <Field
                 id="vaccine_no"
-                name="vaccine_condition"
+                name="had_antibody_test"
                 type="radio"
                 value="false"
                 class="inline accent-darkGray scale-150"
-                v-model="vaccineOption"
+                v-model="had_antibody_test"
                 @change="changeCondition"
                 rules="required"
               />
               <label for="vaccine_no" class="inline-block ml-6">არა</label>
             </div>
             <ErrorMessage
-              name="vaccine_condition"
+              name="had_antibody_test"
               class="text-red-500 absolute text-sm left-3 top-32"
             />
           </div>
-          <div class="flex flex-col w-4/5 gap-2 relative box-border">
-            <div v-if="vaccineOption === 'true'">
+          <div class="flex flex-col w-4/5 gap-2 relative box-border" v-if="isCovidTrue">
+            <div v-if="had_antibody_test === 'true'">
               <label for="test_date" class="font-bold w-full">
                 მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
               </label>
@@ -107,21 +107,23 @@
                 @input="changeCondition"
               />
             </div>
-            <div v-if="vaccineOption === 'false'">
-              <label for="test_date" class="font-bold w-full">
+            <div v-if="had_antibody_test === 'false'">
+              <label for="covid_sickness_date" class="font-bold w-full">
                 თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
               </label>
               <Field
-                id="test_date"
-                name="test_date"
+                id="covid_sickness_date"
+                name="covid_sickness_date"
                 type="text"
                 class="px-3 py-2 border border-darkGray text-sm inline-block ml-3 w-full mt-4"
                 placeholder="დდ/თთ/წწ"
-                v-model="test_date"
-                rules="required"
+                v-model="covid_sickness_date"
                 @input="changeCondition"
               />
-              <ErrorMessage name="test_date" class="text-red-500 absolute text-sm left-3 top-32" />
+              <ErrorMessage
+                name="covid_sickness_date"
+                class="text-red-500 absolute text-sm left-3 top-32"
+              />
             </div>
           </div>
           <div class="absolute bottom-0 left-1/2 flex gap-32" style="transform: translateX(-50%)">
@@ -151,18 +153,21 @@ export default {
   },
 
   computed: {
-    selectedOption() {
-      return this.$store.getters['inputs_covid_condition/selectedOption']
+    had_covid() {
+      return this.$store.getters['inputs_covid_condition/had_covid']
     },
     isCovidTrue() {
-      return this.selectedOption === 'covid_yes'
+      return this.had_covid === 'yes'
     },
-    vaccineOption() {
-      return this.$store.getters['inputs_covid_condition/vaccineOption']
+    had_antibody_test() {
+      return this.$store.getters['inputs_covid_condition/had_antibody_test']
     },
 
     test_date() {
       return this.$store.getters['inputs_covid_condition/test_date']
+    },
+    covid_sickness_date() {
+      return this.$store.getters['inputs_covid_condition/covid_sickness_date']
     },
 
     number() {
@@ -171,10 +176,11 @@ export default {
 
     allInputs() {
       return {
-        condition: this.selectedOption,
-        vaccine_condition: this.vaccine_condition,
+        had_covid: this.had_covid,
+        had_antibody_test: this.had_antibody_test,
         test_date: this.test_date,
-        number: this.number
+        number: this.number,
+        covid_sickness_date: this.covid_sickness_date
       }
     }
   },
@@ -193,9 +199,10 @@ export default {
       this.$router.push('/vaccine-condition')
     },
     changeCondition(e) {
+      console.log(e.target.name)
       this.$store.dispatch('inputs_covid_condition/saveData', {
         ...this.allInputs,
-        vaccine_condition: this.vaccineOption,
+        had_antibody_test: this.had_antibody_test,
         [e.target.name]: e.target.value
       })
     }

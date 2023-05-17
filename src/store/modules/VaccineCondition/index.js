@@ -8,7 +8,8 @@ export default {
     return {
       inputs: {
         had_vaccine: null,
-        vaccination_stage: null
+        vaccination_stage: null,
+        i_am_waiting: null
       }
     }
   },

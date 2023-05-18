@@ -57,12 +57,12 @@ export default {
     showDelayText() {
       setInterval(() => {
         this.showText = true
-      }, 2000)
+      }, 1000)
     },
     showIconsDelay() {
       setInterval(() => {
         this.showIcons = true
-      }, 3000)
+      }, 2000)
     }
   }
 }

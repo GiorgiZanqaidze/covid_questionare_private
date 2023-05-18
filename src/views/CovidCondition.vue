@@ -127,12 +127,8 @@
             </div>
           </div>
           <div class="absolute bottom-0 left-1/2 flex gap-32" style="transform: translateX(-50%)">
-            <router-link to="identify">
-              <img src="/Vector_left.png" alt="vector_left"
-            /></router-link>
-            <button>
-              <img src="/Vector_right.png" alt="vector_right" />
-            </button>
+            <router-arrow-link link="identify"></router-arrow-link>
+            <submit-button></submit-button>
           </div>
         </Form>
         <div>

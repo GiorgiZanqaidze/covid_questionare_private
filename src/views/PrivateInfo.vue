@@ -39,9 +39,7 @@
 
           <required-inputs></required-inputs>
           <div class="absolute bottom-0 left-1/2 flex" style="transform: translateX(-50%)">
-            <button>
-              <img src="/Vector_right.png" alt="vector_right" />
-            </button>
+            <submit-button></submit-button>
           </div>
         </Form>
         <div>

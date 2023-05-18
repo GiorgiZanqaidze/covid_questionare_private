@@ -166,13 +166,10 @@
           </div>
 
           <div class="absolute bottom-0 left-1/2 flex gap-32" style="transform: translateX(-50%)">
-            <router-link to="covid-condition">
-              <img src="/Vector_left.png" alt="vector_left"
-            /></router-link>
-            <button>
-              <img src="/Vector_right.png" alt="vector_right" />
-            </button></div
-        ></Form>
+            <router-arrow-link link="/covid-condition"></router-arrow-link>
+            <submit-button></submit-button>
+          </div>
+        </Form>
         <div>
           <ImageContainer src="/VaccineConditionImage.png" class="w-[783px]" />
           <Animation />

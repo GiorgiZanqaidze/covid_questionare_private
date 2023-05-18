@@ -203,9 +203,7 @@
           </div>
 
           <div class="absolute left-1/2" style="bottom: -80px">
-            <router-link to="/vaccine-condition">
-              <img src="/Vector_left.png" alt="vector_left"
-            /></router-link>
+            <router-arrow-link link="/vaccine-condition"></router-arrow-link>
           </div>
         </Form>
         <div class="mt-20">
@@ -295,6 +293,7 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             this.$router.push('/thank-you')
+            localStorage.clear()
           }
         })
         .catch((error) => {

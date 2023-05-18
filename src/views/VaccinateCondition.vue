@@ -173,7 +173,10 @@
               <img src="/Vector_right.png" alt="vector_right" />
             </button></div
         ></Form>
-        <ImageContainer src="/VaccineConditionImage.png" class="w-[783px]" />
+        <div>
+          <ImageContainer src="/VaccineConditionImage.png" class="w-[783px]" />
+          <Animation />
+        </div>
       </div>
     </div>
   </base-wrapper>
@@ -182,12 +185,14 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
+import Animation from '../components/animations/vaccineCondition.vue'
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer
+    ImageContainer,
+    Animation
   },
 
   computed: {

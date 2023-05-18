@@ -135,7 +135,10 @@
             </button>
           </div>
         </Form>
-        <ImageContainer src="/CovidConditionImage.png" class="w-[870px]" />
+        <div>
+          <ImageContainer src="/CovidConditionImage.png" class="w-[870px]" />
+          <Animation />
+        </div>
       </div>
     </div>
   </base-wrapper>
@@ -144,12 +147,14 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
+import Animation from '../components/animations/covidCondition.vue'
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer
+    ImageContainer,
+    Animation
   },
 
   computed: {
@@ -199,7 +204,6 @@ export default {
       this.$router.push('/vaccine-condition')
     },
     changeCondition(e) {
-      console.log(e.target.name)
       this.$store.dispatch('inputs_covid_condition/saveData', {
         ...this.allInputs,
         had_antibody_test: this.had_antibody_test,

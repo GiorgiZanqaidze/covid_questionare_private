@@ -208,7 +208,10 @@
             /></router-link>
           </div>
         </Form>
-        <ImageContainer src="/bike.png" class="w-[703px]" />
+        <div class="mt-20">
+          <ImageContainer src="/bike.png" class="w-[703px] fixed top-200 left-[1100px]" />
+          <Animation />
+        </div>
       </div>
     </div>
   </base-wrapper>
@@ -217,13 +220,15 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
+import Animation from '../components/animations/suggestions.vue'
 import axios from 'axios'
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer
+    ImageContainer,
+    Animation
   },
 
   computed: {
@@ -288,10 +293,8 @@ export default {
           }
         )
         .then((response) => {
-          console.log(response)
           if (response.status === 201) {
             this.$router.push('/thank-you')
-            // this.$router.push('/suggestions')
           }
         })
         .catch((error) => {

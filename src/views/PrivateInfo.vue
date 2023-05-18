@@ -44,7 +44,10 @@
             </button>
           </div>
         </Form>
-        <ImageContainer src="/identifyImage.png" />
+        <div>
+          <ImageContainer src="/identifyImage.png" />
+          <Animation />
+        </div>
       </div>
     </div>
   </base-wrapper>
@@ -54,12 +57,14 @@
 import { Form } from 'vee-validate'
 import InputField from '../components/forms/inputs/InputField.vue'
 import ImageContainer from '../components/ImageContainer.vue'
+import Animation from '../components/animations/privateInfo.vue'
 
 export default {
   components: {
     Form,
     InputField,
-    ImageContainer
+    ImageContainer,
+    Animation
   },
 
   computed: {

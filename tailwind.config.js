@@ -10,7 +10,9 @@ module.exports = {
         gray: '#EAEAEA',
         darkGray: '#232323',
         lightGray: '#626262',
-        darkBlue: '#1289AE'
+        darkBlue: '#1289AE',
+        darkYellow: '#D6D16E',
+        darkRed: '#DD3939'
       }
     }
   },

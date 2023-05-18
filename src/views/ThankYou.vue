@@ -1,5 +1,12 @@
 <template>
-  <div>
-    <img src="/Last_page.png" alt="" class="w-screen h-screen" />
-  </div>
+  <Animation />
 </template>
+
+<script>
+import Animation from '../components/animations/thankYou.vue'
+export default {
+  components: {
+    Animation
+  }
+}
+</script>

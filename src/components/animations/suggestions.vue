@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box_4-enter-active {
   transition: all 0.5s ease;
 }

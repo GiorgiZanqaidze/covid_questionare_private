@@ -12,3 +12,15 @@ import BaseWrapper from '../components/BaseWrapper.vue'
     </div>
   </base-wrapper>
 </template>
+
+<style>
+a {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  text-transform: lowercase;
+  font-feature-settings: 'case';
+}
+</style>

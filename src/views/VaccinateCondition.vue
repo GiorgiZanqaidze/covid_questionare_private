@@ -135,9 +135,7 @@
             />
           </div>
           <div
-            v-if="
-              vaccination_stage === 'first_dosage_and_registered_on_the_second' && had_vaccine_true
-            "
+            v-if="vaccination_stage === 'first_dosage_and_not_registered_yet' && had_vaccine_true"
           >
             <p class="ml-3 w-3/4">
               რომ არ გადადო, ბარემ ახლავე დარეგისტრირდი <br />

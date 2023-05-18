@@ -217,6 +217,7 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
+import axios from 'axios'
 export default {
   components: {
     Form,
@@ -255,6 +256,47 @@ export default {
         ...this.allInputs,
         [e.target.name]: e.target.value
       })
+    },
+    async onSubmit() {
+      const suggestions = JSON.parse(localStorage.getItem('Suggestions'))
+      const privateInfo = JSON.parse(localStorage.getItem('IdentifyData'))
+      const vaccineCondition = JSON.parse(localStorage.getItem('VaccineCondition'))
+      const covidCondition = JSON.parse(localStorage.getItem('CovidCondition'))
+
+      const allInputs = {
+        ...privateInfo,
+        antibodies: {
+          test_date: vaccineCondition.test_date,
+          number: vaccineCondition.number
+        },
+        had_vaccine: JSON.parse(vaccineCondition.had_vaccine),
+        vaccination_stage: 'first_dosage_and_registered_on_the_second',
+        ...covidCondition,
+        ...suggestions
+      }
+
+      axios
+        .post(
+          'https://covid19.devtest.ge/api/create',
+          {
+            ...allInputs
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        )
+        .then((response) => {
+          console.log(response)
+          if (response.status === 201) {
+            this.$router.push('/thank-you')
+            // this.$router.push('/suggestions')
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     }
   },
 
@@ -263,8 +305,6 @@ export default {
     if (data) {
       this.$store.dispatch('inputs_suggestions/saveData', data)
     }
-
-    console.log(data)
   }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
   <base-wrapper>
-    <div class="mt-12">
+    <div class="my-12">
       <form-header :page="1"></form-header>
-      <div class="flex">
-        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12 relative">
+      <div class="flex relative">
+        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12">
           <input-field
             label="სახელი"
             name="first_name"
@@ -12,7 +12,7 @@
             placeholder="იოსებ"
             v-model="first_name"
             @save-data="changeInput"
-            rules="required|min_length:3"
+            rules="required|min_length_name:3|alpha_name|max_length_name:256"
           ></input-field>
 
           <input-field
@@ -23,7 +23,7 @@
             placeholder="ჯუღაშვილი"
             v-model="last_name"
             @save-data="changeInput"
-            rules="required|min_length:3"
+            rules="required|min_length_surname:3|alpha_surname|max_length_surname:256"
           ></input-field>
 
           <input-field
@@ -34,17 +34,18 @@
             placeholder="fbi@redberry.ge"
             v-model="email"
             @save-data="changeInput"
-            rules="required|redberry_email"
+            rules="required|email|redberry_email"
           ></input-field>
 
           <required-inputs></required-inputs>
-          <div class="w-full absolute bottom-10 flex gap-10 translate-x-1/4 justify-end">
-            <button class="">
-              <img src="/Vector_right.png" alt="vector_right" />
-            </button>
+          <div class="absolute bottom-0 left-1/2 flex" style="transform: translateX(-50%)">
+            <submit-button></submit-button>
           </div>
         </Form>
-        <ImageContainer src="/identifyImage.png" />
+        <div>
+          <ImageContainer src="/identifyImage.png" />
+          <Animation />
+        </div>
       </div>
     </div>
   </base-wrapper>
@@ -54,12 +55,14 @@
 import { Form } from 'vee-validate'
 import InputField from '../components/forms/inputs/InputField.vue'
 import ImageContainer from '../components/ImageContainer.vue'
+import Animation from '../components/animations/privateInfo.vue'
 
 export default {
   components: {
     Form,
     InputField,
-    ImageContainer
+    ImageContainer,
+    Animation
   },
 
   computed: {

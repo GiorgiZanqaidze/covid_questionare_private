@@ -7,9 +7,10 @@ export default {
   state() {
     return {
       inputs: {
-        had_vaccine: null,
-        vaccination_stage: null,
-        i_am_waiting: null
+        non_formal_meetings: null,
+        number_of_days_from_office: null,
+        what_about_meetings_in_live: '',
+        tell_us_your_opinion_about_us: ''
       }
     }
   },

@@ -84,7 +84,7 @@
               class="text-red-500 absolute text-sm left-3 top-32"
             />
           </div>
-          <div v-else class="flex flex-col w-full gap-2 relative">
+          <div v-if="had_vaccine_false" class="flex flex-col w-full gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">რას ელოდები?*</h1>
             <div class="inline-block ml-3">
               <Field
@@ -129,10 +129,7 @@
                 >გადატანილი მაქვს და ვგეგმავ აცრას</label
               >
             </div>
-            <ErrorMessage
-              name="vaccination_stage"
-              class="text-red-500 absolute text-sm left-3 top-32"
-            />
+            <ErrorMessage name="i_am_waiting" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
           <div
             v-if="vaccination_stage === 'first_dosage_and_not_registered_yet' && had_vaccine_true"
@@ -144,7 +141,7 @@
               >
             </p>
           </div>
-          <div v-if="i_am_waiting === 'not_planning' && !had_vaccine_true">
+          <div v-if="i_am_waiting === 'not_planning' && had_vaccine_false">
             <p class="ml-3 w-3/4">
               <a href="https://booking.moh.gov.ge/" class="text-darkBlue inline-block mt-3"
                 >👉 https://booking.moh.gov.ge/</a
@@ -152,7 +149,7 @@
             </p>
           </div>
           <div
-            v-if="i_am_waiting === 'had_covid_and_planning_to_be_vaccinated' && !had_vaccine_true"
+            v-if="i_am_waiting === 'had_covid_and_planning_to_be_vaccinated' && had_vaccine_false"
           >
             <p class="ml-3 w-3/4">
               ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.<br />
@@ -198,6 +195,9 @@ export default {
     },
     had_vaccine_true() {
       return this.had_vaccine === 'true'
+    },
+    had_vaccine_false() {
+      return this.had_vaccine === 'false'
     },
     vaccination_stage() {
       return this.$store.getters['inputs_vaccine_condition/vaccination_stage']

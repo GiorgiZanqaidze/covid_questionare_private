@@ -46,7 +46,7 @@
               />
               <label for="have_right_now" class="inline-block ml-6">ახლა მაქვს</label>
             </div>
-            <ErrorMessage name="condition" class="text-red-500 absolute text-sm left-3 top-32" />
+            <ErrorMessage name="had_covid" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
           <div v-if="isCovidTrue" class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">
@@ -119,6 +119,7 @@
                 placeholder="დდ/თთ/წწ"
                 v-model="covid_sickness_date"
                 @input="changeCondition"
+                rules="required|required_date"
               />
               <ErrorMessage
                 name="covid_sickness_date"

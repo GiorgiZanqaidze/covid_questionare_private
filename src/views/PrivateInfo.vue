@@ -12,7 +12,7 @@
             placeholder="იოსებ"
             v-model="first_name"
             @save-data="changeInput"
-            rules="required|min_length:3"
+            rules="required|min_length_name:3|alpha_name|max_length_name:256"
           ></input-field>
 
           <input-field
@@ -23,7 +23,7 @@
             placeholder="ჯუღაშვილი"
             v-model="last_name"
             @save-data="changeInput"
-            rules="required|min_length:3"
+            rules="required|min_length_surname:3|alpha_surname|max_length_surname:256"
           ></input-field>
 
           <input-field
@@ -34,7 +34,7 @@
             placeholder="fbi@redberry.ge"
             v-model="email"
             @save-data="changeInput"
-            rules="required|redberry_email"
+            rules="required|email|redberry_email"
           ></input-field>
 
           <required-inputs></required-inputs>

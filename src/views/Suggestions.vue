@@ -78,7 +78,7 @@
             </div>
             <ErrorMessage
               name="non_formal_meetings"
-              class="text-red-500 absolute text-sm left-3 top-32"
+              class="text-red-500 absolute text-sm left-3 bottom-[-30px]"
             />
           </div>
           <div class="flex flex-col w- gap-2 relative">
@@ -165,7 +165,7 @@
             </div>
             <ErrorMessage
               name="number_of_days_from_office"
-              class="text-red-500 absolute text-sm left-3 top-32"
+              class="text-red-500 absolute text-sm left-3 top-56"
             />
           </div>
           <div class="flex flex-col">
@@ -274,6 +274,7 @@ export default {
         },
         had_vaccine: JSON.parse(vaccineCondition.had_vaccine),
         vaccination_stage: 'first_dosage_and_registered_on_the_second',
+        i_am_waiting: vaccineCondition.i_am_waiting,
         ...covidCondition,
         ...suggestions
       }

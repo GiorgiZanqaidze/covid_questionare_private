@@ -43,7 +43,7 @@
           </div>
         </Form>
         <div>
-          <ImageContainer src="/identifyImage.png" />
+          <ImageContainer src="/src/assets/images/identifyImage.svg" />
           <Animation />
         </div>
       </div>

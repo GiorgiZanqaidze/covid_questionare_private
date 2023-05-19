@@ -168,7 +168,7 @@
           </div>
         </Form>
         <div>
-          <ImageContainer src="/VaccineConditionImage.png" class="w-[783px]" />
+          <ImageContainer src="/src/assets/images/doctor2.svg" class="w-[783px]" />
           <Animation />
         </div>
       </div>

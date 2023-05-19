@@ -207,7 +207,10 @@
           </div>
         </Form>
         <div class="mt-20">
-          <ImageContainer src="/bike.png" class="w-[703px] fixed top-200 left-[1100px]" />
+          <ImageContainer
+            src="/src/assets/images/bike2.svg"
+            class="w-[703px] fixed top-200 left-[1100px]"
+          />
           <Animation />
         </div>
       </div>

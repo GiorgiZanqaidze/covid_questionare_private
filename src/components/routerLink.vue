@@ -1,5 +1,7 @@
 <template>
-  <router-link :to="link"> <img src="/Vector_left.png" alt="vector_left" /></router-link>
+  <router-link :to="link">
+    <img src="/src/assets/icons/left_arrow.svg" alt="vector_left"
+  /></router-link>
 </template>
 
 <script>

@@ -2,8 +2,6 @@
 
 Covid questionaire app helps people to register their information about covid condition. They can also get current information about covid and vaccination.
 
-## Recommended IDE Setup
-
 #
 
 ### Table of Contents
@@ -18,9 +16,6 @@ Covid questionaire app helps people to register their information about covid co
 ### Prerequisites
 
 - <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" width="35" style="position: relative; top: 4px" /> _JS_ES6_and up_
--
-
-#
 
 #
 

@@ -1,7 +1,7 @@
 <template>
   <transition name="box_4">
     <img
-      src="/heart_logo.png"
+      src="/src/assets/images/heart_logo.svg"
       v-if="showBox"
       class="fixed left-[1200px] top-[300px] h-[172px] w-[194px] opacity-70"
   /></transition>

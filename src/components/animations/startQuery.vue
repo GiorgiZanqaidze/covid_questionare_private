@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center gap-10 font-arial">
     <transition name="logo">
-      <img src="/RB_LOGO.png" alt="redberry" class="scale-[1]" v-if="showLogo" />
+      <img src="../../assets/images/RB_LOGO.svg" alt="redberry" class="scale-[1]" v-if="showLogo" />
     </transition>
     <div class="h-44 relative w-44 overflow-hidden">
       <transition name="text">

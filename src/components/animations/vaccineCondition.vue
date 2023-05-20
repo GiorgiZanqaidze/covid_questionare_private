@@ -1,7 +1,7 @@
 <template>
   <transition name="box_3">
     <img
-      src="/star_logo.png"
+      src="/src/assets/images/star_logo.svg"
       v-if="showBox"
       class="absolute bottom-[520px] left-[800px] h-[229px] w-[229px] opacity-70"
     />

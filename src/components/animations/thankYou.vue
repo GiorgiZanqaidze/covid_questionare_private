@@ -22,7 +22,7 @@
           class="text-white absolute bottom-[100px] right-[80px] w-14"
           style="transform: translateY(-50%) translate(-50%)"
         >
-          <img src="/animateIcon.png" class="w-10" />
+          <img src="/src/assets/images/Frame2.svg" class="w-10" />
         </div>
       </transition>
       <transition name="icon_1">
@@ -31,7 +31,7 @@
           class="text-white absolute top-[0px] left-[150px] w-7"
           style="transform: translateY(-50%) translate(-50%)"
         >
-          <img src="/animateIcon.png" class="w-10" />
+          <img src="/src/assets/images/Frame2.svg" class="w-10" />
         </div>
       </transition>
     </div>

@@ -4,7 +4,7 @@
       :name="name"
       :id="name"
       type="radio"
-      :value="name"
+      :value="value"
       class="inline"
       v-bind="$attrs"
       v-model="selectedOption"
@@ -34,6 +34,10 @@ export default {
       required: true
     },
     label: {
+      type: String,
+      required: true
+    },
+    value: {
       type: String,
       required: true
     }

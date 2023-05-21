@@ -168,34 +168,22 @@
               class="text-red-500 absolute text-sm left-3 top-56"
             />
           </div>
-          <div class="flex flex-col">
-            <label for="about_meeting" class="block text-base font-bold tracking-wide mb-2"
-              >რას ფიქრობ ფიზიკურ შეკრებებზე?</label
-            >
-            <textarea
-              rules="required"
-              id="about_meeting"
-              name="what_about_meetings_in_live"
-              type="text"
-              class="w-full px-3 py-2 border border-darkGray text-sm min-h-[180px]"
-              v-model="what_about_meetings_in_live"
-              @change="changeInputs"
-            ></textarea>
-          </div>
-          <div class="flex flex-col">
-            <label for="about_us" class="block text-base font-bold tracking-wide mb-2"
-              >რას ფიქრობ არსებულ გარემოზე: რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?</label
-            >
-            <textarea
-              rules="required"
-              id="about_us"
-              name="tell_us_your_opinion_about_us"
-              type="text"
-              class="w-full px-3 py-2 border border-darkGray text-sm min-h-[180px]"
-              v-model="tell_us_your_opinion_about_us"
-              @change="changeInputs"
-            ></textarea>
-          </div>
+          <TextArea
+            label="რას ფიქრობ ფიზიკურ შეკრებებზე?"
+            id="about_meeting"
+            name="what_about_meetings_in_live"
+            @save-data="changeInputs"
+            v-model="what_about_meetings_in_live"
+            :value="what_about_meetings_in_live"
+          />
+          <TextArea
+            label="რას ფიქრობ არსებულ გარემოზე: რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
+            id="about_us"
+            name="tell_us_your_opinion_about_us"
+            @save-data="changeInputs"
+            v-model="tell_us_your_opinion_about_us"
+            :value="tell_us_your_opinion_about_us"
+          />
           <div class="flex justify-end">
             <button class="bg-darkBlue px-5 py-3 rounded-[42px] text-white text-sm font-semibold">
               დასრულება
@@ -208,7 +196,7 @@
         </Form>
         <div class="mt-20">
           <ImageContainer
-            src="/src/assets/images/bike2.svg"
+            src="../../src/assets/images/bike2.svg"
             class="w-[703px] fixed top-200 left-[1100px]"
           />
           <Animation />
@@ -222,6 +210,7 @@
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
 import Animation from '../components/animations/suggestions.vue'
+import TextArea from '../components/forms/inputs/textarea.vue'
 import axios from 'axios'
 export default {
   components: {
@@ -229,7 +218,8 @@ export default {
     Field,
     ErrorMessage,
     ImageContainer,
-    Animation
+    Animation,
+    TextArea
   },
 
   computed: {

@@ -3,7 +3,6 @@
     <label v-if="label" :for="name" class="text-base font-bold tracking-wide">{{ label }}*</label>
     <Field
       :name="name"
-      :value="name"
       :id="id"
       class="px-3 py-2 border border-darkGray text-sm"
       v-bind="$attrs"

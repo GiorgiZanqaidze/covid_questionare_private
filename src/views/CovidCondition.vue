@@ -133,7 +133,7 @@
           </div>
         </Form>
         <div>
-          <ImageContainer src="/src/assets/images/vaccinate2.svg" class="w-[870px]" />
+          <ImageContainer src="../../src/assets/images/vaccinate2.svg" class="w-[870px]" />
           <Animation />
         </div>
       </div>

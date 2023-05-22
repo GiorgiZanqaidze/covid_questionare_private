@@ -1,7 +1,3 @@
-<script setup>
-import BaseWrapper from '../components/BaseWrapper.vue'
-</script>
-
 <template>
   <base-wrapper class="overflow-hidden">
     <Animation />
@@ -9,7 +5,7 @@ import BaseWrapper from '../components/BaseWrapper.vue'
 </template>
 
 <script>
-import Animation from '../components/startQuery.vue'
+import Animation from '../components/TheStartQuery.vue'
 export default {
   components: {
     Animation

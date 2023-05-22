@@ -175,17 +175,15 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/suggestions.vue'
-import TextArea from '../components/textarea.vue'
-import RadioButton from '../components/RadioInput.vue'
+import Animation from '../components/TheSuggestions.vue'
+import TextArea from '../components/TheTextarea.vue'
+import RadioButton from '../components/TheRadioInput.vue'
 import axios from 'axios'
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer,
     Animation,
     TextArea,
     RadioButton

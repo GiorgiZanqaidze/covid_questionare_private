@@ -55,15 +55,13 @@
 
 <script>
 import { Form } from 'vee-validate'
-import InputField from '../components/InputField.vue'
-import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/privateInfo.vue'
+import InputField from '../components/TheInputField.vue'
+import Animation from '../components/ThePrivateInfo.vue'
 
 export default {
   components: {
     Form,
     InputField,
-    ImageContainer,
     Animation
   },
 

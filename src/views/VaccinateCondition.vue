@@ -184,15 +184,13 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/vaccineCondition.vue'
-import RadioButton from '../components/RadioInput.vue'
+import Animation from '../components/TheVaccineCondition.vue'
+import RadioButton from '../components/TheRadioInput.vue'
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer,
     Animation
   },
 

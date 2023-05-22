@@ -177,9 +177,9 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/animations/suggestions.vue'
-import TextArea from '../components/forms/inputs/textarea.vue'
-import RadioButton from '../components/forms/inputs/RadioInput.vue'
+import Animation from '../components/suggestions.vue'
+import TextArea from '../components/textarea.vue'
+import RadioButton from '../components/RadioInput.vue'
 import axios from 'axios'
 export default {
   components: {

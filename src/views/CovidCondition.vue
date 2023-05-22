@@ -144,7 +144,7 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/animations/covidCondition.vue'
+import Animation from '../components/covidCondition.vue'
 export default {
   components: {
     Form,

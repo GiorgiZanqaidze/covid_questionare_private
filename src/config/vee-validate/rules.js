@@ -1,12 +1,5 @@
-// ===============================================================================================
-// ===============================================================================================
-// strategy #1
-//                              Vee-Validate & @vee-validate/rules
-//  if you need few rules, and want to declare them in more readable way, it's the best approach
-// ===============================================================================================
-// ===============================================================================================
-import { defineRule } from 'vee-validate' // npm install vee-validate --save
-import { required, email, min, alpha } from '@vee-validate/rules' // npm install @vee-validate/rules
+import { defineRule } from 'vee-validate'
+import { required, email, min, alpha } from '@vee-validate/rules'
 
 defineRule('required', required)
 defineRule('email', email)

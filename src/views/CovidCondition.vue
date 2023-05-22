@@ -86,7 +86,7 @@
           <div class="flex flex-col w-4/5 gap-2 relative box-border" v-if="isCovidTrue">
             <div v-if="had_antibody_test === 'true'">
               <label for="test_date" class="font-bold w-full">
-                მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
+                თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
               </label>
               <Field
                 id="test_date"
@@ -109,7 +109,7 @@
             </div>
             <div v-if="had_antibody_test === 'false'">
               <label for="covid_sickness_date" class="font-bold w-full">
-                თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
+                მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
               </label>
               <Field
                 id="covid_sickness_date"

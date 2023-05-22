@@ -24,7 +24,7 @@ export default {
     }
   },
   mounted() {
-    ;(this.showBox = true), console.log(this.prevPage)
+    this.showBox = true
   }
 }
 </script>

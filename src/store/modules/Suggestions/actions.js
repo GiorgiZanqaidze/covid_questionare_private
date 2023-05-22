@@ -1,4 +1,6 @@
 import axios from 'axios'
+import postCovidData from '../../../services/postService'
+
 export default {
   saveData(context, data) {
     const formData = {
@@ -32,25 +34,6 @@ export default {
       ...suggestions
     }
 
-    axios
-      .post(
-        'https://covid19.devtest.ge/api/create',
-        {
-          ...allInputs
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      )
-      .then((response) => {
-        if (response.status !== 201) {
-          return Error(response.status)
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    postCovidData(allInputs)
   }
 }

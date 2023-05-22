@@ -43,7 +43,7 @@
           </div>
         </Form>
         <div>
-          <ImageContainer src="/src/assets/images/identifyImage.svg" />
+          <ImageContainer src="../../src/assets/images/identifyImage.svg" />
           <Animation />
         </div>
       </div>
@@ -53,9 +53,9 @@
 
 <script>
 import { Form } from 'vee-validate'
-import InputField from '../components/forms/inputs/InputField.vue'
+import InputField from '../components/InputField.vue'
 import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/animations/privateInfo.vue'
+import Animation from '../components/privateInfo.vue'
 
 export default {
   components: {

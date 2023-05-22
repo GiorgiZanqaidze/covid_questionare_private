@@ -6,6 +6,7 @@
         <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">უკვე აცრილი ხარ?*</h1>
+
             <div class="inline-block ml-3">
               <Field
                 id="vaccine_yes"
@@ -19,6 +20,7 @@
               />
               <label for="vaccine_yes" class="inline-block ml-6">კი</label>
             </div>
+
             <div class="inline-block ml-3">
               <Field
                 id="vaccine_no"
@@ -32,6 +34,7 @@
               />
               <label for="vaccine_no" class="inline-block ml-6">არა</label>
             </div>
+
             <ErrorMessage name="had_vaccine" class="text-red-500 absolute text-sm left-3 top-32" />
           </div>
           <div v-if="had_vaccine_true" class="flex flex-col w-full gap-2 relative">
@@ -51,6 +54,7 @@
                 >პირველი დოზა და დარეგისტრირებული ვარ მეორეზე</label
               >
             </div>
+
             <div class="inline-block ml-3">
               <Field
                 id="full_dose"
@@ -168,7 +172,7 @@
           </div>
         </Form>
         <div>
-          <ImageContainer src="/src/assets/images/doctor2.svg" class="w-[783px]" />
+          <ImageContainer src="../../src/assets/images/doctor2.svg" class="w-[783px]" />
           <Animation />
         </div>
       </div>
@@ -179,7 +183,8 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/animations/vaccineCondition.vue'
+import Animation from '../components/vaccineCondition.vue'
+import RadioButton from '../components/RadioInput.vue'
 export default {
   components: {
     Form,

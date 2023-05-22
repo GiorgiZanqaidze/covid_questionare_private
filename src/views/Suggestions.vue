@@ -3,7 +3,7 @@
     <div class="my-12">
       <form-header :page="4"></form-header>
       <div class="flex justify-between mb-14 relative">
-        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12">
+        <Form @submit="postInputsData" class="w-[650px] flex flex-col mt-12 gap-12">
           <div class="flex flex-col w-[606px] gap-2 relative">
             <div class="mb-4">
               <p>
@@ -37,45 +37,33 @@
               />
               <label for="twice_a_week" class="inline-block ml-6">კვირაში ორჯერ</label>
             </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="once_a_week"
-                name="non_formal_meetings"
-                type="radio"
-                value="once_a_week"
-                class="inline accent-darkGray scale-150"
-                v-model="non_formal_meetings"
-                @change="changeInputs"
-              />
-              <label for="once_a_week" class="inline-block ml-6">კვირაში ერთხელ</label>
-            </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="once_in_a_two_weeks"
-                name="non_formal_meetings"
-                type="radio"
-                value="once_in_a_two_weeks"
-                class="inline accent-darkGray scale-150"
-                v-model="non_formal_meetings"
-                @change="changeInputs"
-              />
-              <label for="once_in_a_two_weeks" class="inline-block ml-6">ორ კვირაში ერთხელ</label>
-            </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="once_in_a_month"
-                name="non_formal_meetings"
-                type="radio"
-                value="once_in_a_month"
-                class="inline accent-darkGray scale-150"
-                v-model="non_formal_meetings"
-                @change="changeInputs"
-              />
-              <label for="once_in_a_month" class="inline-block ml-6">თვეში ერთხელ</label>
-            </div>
+            <RadioButton
+              rules="required"
+              label="კვირაში ერთხელ"
+              name="non_formal_meetings"
+              v-model="non_formal_meetings"
+              value="once_a_week"
+              id="once_a_week"
+              @save-data="changeInputs"
+            />
+            <RadioButton
+              rules="required"
+              label="ორ კვირაში ერთხელ"
+              name="non_formal_meetings"
+              v-model="non_formal_meetings"
+              value="once_in_a_two_weeks"
+              id="once_in_a_two_weeks"
+              @save-data="changeInputs"
+            />
+            <RadioButton
+              rules="required"
+              label="თვეში ერთხელ"
+              name="non_formal_meetings"
+              v-model="non_formal_meetings"
+              value="once_in_a_month"
+              id="once_in_a_month"
+              @save-data="changeInputs"
+            />
             <ErrorMessage
               name="non_formal_meetings"
               class="text-red-500 absolute text-sm left-3 bottom-[-30px]"
@@ -85,7 +73,7 @@
             <h1 class="text-base font-bold tracking-wide">
               კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*
             </h1>
-            <div class="inline-block ml-3">
+            <div class="ml-3">
               <Field
                 rules="required"
                 id="0"
@@ -98,104 +86,72 @@
               />
               <label for="0" class="inline-block ml-6">0</label>
             </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="1"
-                name="number_of_days_from_office"
-                type="radio"
-                value="1"
-                class="inline accent-darkGray scale-150"
-                v-model="number_of_days_from_office"
-                @change="changeInputs"
-              />
-              <label for="1" class="inline-block ml-6">1</label>
-            </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="2"
-                name="number_of_days_from_office"
-                type="radio"
-                value="2"
-                class="inline accent-darkGray scale-150"
-                v-model="number_of_days_from_office"
-                @change="changeInputs"
-              />
-              <label for="2" class="inline-block ml-6">2</label>
-            </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="3"
-                name="number_of_days_from_office"
-                type="radio"
-                value="3"
-                class="inline accent-darkGray scale-150"
-                v-model="number_of_days_from_office"
-                @change="changeInputs"
-              />
-              <label for="3" class="inline-block ml-6">3</label>
-            </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="4"
-                name="number_of_days_from_office"
-                type="radio"
-                value="4"
-                class="inline accent-darkGray scale-150"
-                v-model="number_of_days_from_office"
-                @change="changeInputs"
-              />
-              <label for="4" class="inline-block ml-6">4</label>
-            </div>
-            <div class="inline-block ml-3">
-              <Field
-                rules="required"
-                id="5"
-                name="number_of_days_from_office"
-                type="radio"
-                value="5"
-                class="inline accent-darkGray scale-150"
-                v-model="number_of_days_from_office"
-                @change="changeInputs"
-              />
-              <label for="5" class="inline-block ml-6">5</label>
-            </div>
+            <RadioButton
+              rules="required"
+              label="1"
+              name="number_of_days_from_office"
+              v-model="number_of_days_from_office"
+              value="1"
+              id="1"
+              @save-data="changeInputs"
+            />
+            <RadioButton
+              rules="required"
+              label="2"
+              name="number_of_days_from_office"
+              v-model="number_of_days_from_office"
+              value="2"
+              id="2"
+              @save-data="changeInputs"
+            />
+            <RadioButton
+              rules="required"
+              label="3"
+              name="number_of_days_from_office"
+              v-model="number_of_days_from_office"
+              value="3"
+              id="3"
+              @save-data="changeInputs"
+            />
+            <RadioButton
+              rules="required"
+              label="4"
+              name="number_of_days_from_office"
+              v-model="number_of_days_from_office"
+              value="4"
+              id="4"
+              @save-data="changeInputs"
+            />
+            <RadioButton
+              rules="required"
+              label="5"
+              name="number_of_days_from_office"
+              v-model="number_of_days_from_office"
+              value="5"
+              id="5"
+              @save-data="changeInputs"
+            />
             <ErrorMessage
               name="number_of_days_from_office"
               class="text-red-500 absolute text-sm left-3 top-56"
             />
           </div>
-          <div class="flex flex-col">
-            <label for="about_meeting" class="block text-base font-bold tracking-wide mb-2"
-              >რას ფიქრობ ფიზიკურ შეკრებებზე?</label
-            >
-            <textarea
-              rules="required"
-              id="about_meeting"
-              name="what_about_meetings_in_live"
-              type="text"
-              class="w-full px-3 py-2 border border-darkGray text-sm min-h-[180px]"
-              v-model="what_about_meetings_in_live"
-              @change="changeInputs"
-            ></textarea>
-          </div>
-          <div class="flex flex-col">
-            <label for="about_us" class="block text-base font-bold tracking-wide mb-2"
-              >რას ფიქრობ არსებულ გარემოზე: რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?</label
-            >
-            <textarea
-              rules="required"
-              id="about_us"
-              name="tell_us_your_opinion_about_us"
-              type="text"
-              class="w-full px-3 py-2 border border-darkGray text-sm min-h-[180px]"
-              v-model="tell_us_your_opinion_about_us"
-              @change="changeInputs"
-            ></textarea>
-          </div>
+          <TextArea
+            label="რას ფიქრობ ფიზიკურ შეკრებებზე?"
+            id="about_meeting"
+            name="what_about_meetings_in_live"
+            @save-data="changeInputs"
+            v-model="what_about_meetings_in_live"
+            :value="what_about_meetings_in_live"
+          />
+          <TextArea
+            label="რას ფიქრობ არსებულ გარემოზე: რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
+            id="about_us"
+            name="tell_us_your_opinion_about_us"
+            @save-data="changeInputs"
+            v-model="tell_us_your_opinion_about_us"
+            :value="tell_us_your_opinion_about_us"
+          />
           <div class="flex justify-end">
             <button class="bg-darkBlue px-5 py-3 rounded-[42px] text-white text-sm font-semibold">
               დასრულება
@@ -208,7 +164,7 @@
         </Form>
         <div class="mt-20">
           <ImageContainer
-            src="/src/assets/images/bike2.svg"
+            src="../../src/assets/images/bike2.svg"
             class="w-[703px] fixed top-200 left-[1100px]"
           />
           <Animation />
@@ -221,7 +177,9 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/animations/suggestions.vue'
+import Animation from '../components/suggestions.vue'
+import TextArea from '../components/textarea.vue'
+import RadioButton from '../components/RadioInput.vue'
 import axios from 'axios'
 export default {
   components: {
@@ -229,7 +187,9 @@ export default {
     Field,
     ErrorMessage,
     ImageContainer,
-    Animation
+    Animation,
+    TextArea,
+    RadioButton
   },
 
   computed: {
@@ -263,46 +223,10 @@ export default {
         [e.target.name]: e.target.value
       })
     },
-    async onSubmit() {
-      const suggestions = JSON.parse(localStorage.getItem('Suggestions'))
-      const privateInfo = JSON.parse(localStorage.getItem('IdentifyData'))
-      const vaccineCondition = JSON.parse(localStorage.getItem('VaccineCondition'))
-      const covidCondition = JSON.parse(localStorage.getItem('CovidCondition'))
-
-      const allInputs = {
-        ...privateInfo,
-        antibodies: {
-          test_date: vaccineCondition.test_date,
-          number: vaccineCondition.number
-        },
-        had_vaccine: JSON.parse(vaccineCondition.had_vaccine),
-        vaccination_stage: 'first_dosage_and_registered_on_the_second',
-        i_am_waiting: vaccineCondition.i_am_waiting,
-        ...covidCondition,
-        ...suggestions
-      }
-
-      axios
-        .post(
-          'https://covid19.devtest.ge/api/create',
-          {
-            ...allInputs
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-        )
-        .then((response) => {
-          if (response.status === 201) {
-            this.$router.push('/thank-you')
-            localStorage.clear()
-          }
-        })
-        .catch((error) => {
-          console.error(error)
-        })
+    postInputsData() {
+      this.$store.dispatch('inputs_suggestions/postData')
+      this.$router.push('/thank-you')
+      localStorage.clear()
     }
   },
 

@@ -9,7 +9,7 @@ import BaseWrapper from '../components/BaseWrapper.vue'
 </template>
 
 <script>
-import Animation from '../components/animations/startQuery.vue'
+import Animation from '../components/startQuery.vue'
 export default {
   components: {
     Animation

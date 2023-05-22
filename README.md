@@ -61,10 +61,4 @@ it builds your tailwind.js files into executable scripts.
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
 # giorgi-zanqaidze-covid-questionaire

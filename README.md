@@ -31,13 +31,13 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## getting Started
 
-1\. First of all you need to clone E Space repository from github:
+1\. First of all you need to clone Covid Questionaire repository from github:
 
 ```sh
 git clone https://github.com/RedberryInternship/giorgi-zanqaidze-covid-questionaire
 ```
 
-2\. Next step requires you to run _composer install_ in order to install all the dependencies.
+2\. Next step requires you to run npm install in order to install all the dependencies.
 
 ```sh
 npm install

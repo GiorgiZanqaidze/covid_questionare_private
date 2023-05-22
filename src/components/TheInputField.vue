@@ -5,8 +5,10 @@
       :name="name"
       :id="id"
       class="px-3 py-2 border border-darkGray text-sm"
-      v-bind="$attrs"
+      :value="value"
       @change="saveInput"
+      :rules="rules"
+      :placeholder="placeholder"
     />
     <ErrorMessage :name="name" class="text-red-500 absolute top-20 text-sm left-3" />
   </div>
@@ -38,6 +40,16 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    value: {
+      type: String,
+      required: true
+    },
+    rules: {
+      type: String
+    },
+    placeholder: {
+      type: String
     }
   }
 }

@@ -172,7 +172,9 @@
           </div>
         </Form>
         <div>
-          <ImageContainer src="../../src/assets/images/doctor2.svg" class="w-[783px]" />
+          <div class="w-[783px]">
+            <img src="@/assets/images/doctor2.svg" alt="animation" />
+          </div>
           <Animation />
         </div>
       </div>

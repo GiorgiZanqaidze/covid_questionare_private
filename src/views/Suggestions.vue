@@ -163,10 +163,9 @@
           </div>
         </Form>
         <div class="mt-20">
-          <ImageContainer
-            src="../../src/assets/images/bike2.svg"
-            class="w-[703px] fixed top-200 left-[1100px]"
-          />
+          <div class="w-[703px] fixed top-200 left-[1100px]">
+            <img src="@/assets/images/bike2.svg" alt="animation" />
+          </div>
           <Animation />
         </div>
       </div>

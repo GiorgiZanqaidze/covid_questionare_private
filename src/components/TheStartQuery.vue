@@ -3,21 +3,21 @@
     <transition name="logo">
       <img src="../assets/images/RB_LOGO.svg" alt="redberry" class="scale-[1]" v-if="showLogo" />
     </transition>
-    <div class="h-44 relative w-44 overflow-hidden">
+    <div class="h-44 relative w-60 overflow-hidden">
       <transition name="text">
         <RouterLink
           v-if="showText"
           @mouseover="mouseOverText"
           @mouseleave="mouseLeaveText"
           to="/identify"
-          class="w-[220px] text-3xl text-center leading-9 font-semibold inline-block absolute bottom-[130px] z-20"
+          class="text-3xl text-center leading-9 font-semibold inline-block absolute bottom-[130px] z-20"
           >კითხვარის დაწყება</RouterLink
         >
       </transition>
       <RouterLink
         v-if="showText && mouseOver"
         to="/identify"
-        class="w-[220px] text-3xl text-center leading-9 inline-block absolute left-1 bottom-[129px] z-0"
+        class="text-3xl text-center leading-9 inline-block absolute left-2 bottom-[129px] z-0"
         >კითხვარის დაწყება</RouterLink
       >
     </div>

@@ -89,6 +89,7 @@
                 თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
               </label>
               <Field
+                :rules="isRequiredDate"
                 id="test_date"
                 name="test_date"
                 type="text"
@@ -107,6 +108,7 @@
                 @input="changeCondition"
               />
             </div>
+            <ErrorMessage name="test_date" class="text-red-500 absolute text-sm left-3 top-40" />
             <div v-if="had_antibody_test === 'false'">
               <label for="covid_sickness_date" class="font-bold w-full">
                 მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
@@ -174,6 +176,13 @@ export default {
 
     number() {
       return this.$store.getters['inputs_covid_condition/number']
+    },
+    isRequiredDate() {
+      if (this.test_date !== '') {
+        return 'required_date'
+      } else {
+        return
+      }
     },
 
     allInputs() {

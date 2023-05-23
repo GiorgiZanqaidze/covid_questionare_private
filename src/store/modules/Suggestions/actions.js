@@ -15,7 +15,7 @@ export default {
     context.commit('saveData', formData)
   },
 
-  postData(context) {
+  postData() {
     const suggestions = JSON.parse(localStorage.getItem('Suggestions'))
     const privateInfo = JSON.parse(localStorage.getItem('IdentifyData'))
     const vaccineCondition = JSON.parse(localStorage.getItem('VaccineCondition'))
@@ -24,8 +24,8 @@ export default {
     const allInputs = {
       ...privateInfo,
       antibodies: {
-        test_date: vaccineCondition.test_date,
-        number: vaccineCondition.number
+        test_date: covidCondition.test_date,
+        number: covidCondition.number
       },
       had_vaccine: JSON.parse(vaccineCondition.had_vaccine),
       vaccination_stage: vaccineCondition.vaccination_stage,

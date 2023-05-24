@@ -3,7 +3,7 @@
     <img
       src="/src/assets/images/heart_logo.svg"
       v-if="showBox"
-      class="fixed left-[1000px] top-[300px] h-[172px] w-[194px] opacity-70"
+      class="fixed left-[1100px] top-[270px] h-[172px] w-[194px] opacity-70"
   /></transition>
 </template>
 
@@ -34,10 +34,10 @@ export default {
 }
 
 .box_4-enter-to {
-  top: 300px;
+  top: 270px;
   width: 194px;
   height: 172px;
   opacity: 0.7;
-  left: 1200;
+  left: 1100;
 }
 </style>

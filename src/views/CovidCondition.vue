@@ -179,7 +179,7 @@ export default {
       return this.$store.getters['inputs_covid_condition/number']
     },
     isRequiredDate() {
-      if (this.test_date !== '') {
+      if (this.test_date) {
         return 'required_date'
       } else {
         return

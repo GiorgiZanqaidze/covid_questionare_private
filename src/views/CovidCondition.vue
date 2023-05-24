@@ -86,9 +86,10 @@
           <div class="flex flex-col w-4/5 gap-2 relative box-border" v-if="isCovidTrue">
             <div v-if="had_antibody_test === 'true'">
               <label for="test_date" class="font-bold w-full">
-                მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
+                თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
               </label>
               <Field
+                :rules="isRequiredDate"
                 id="test_date"
                 name="test_date"
                 type="text"
@@ -107,9 +108,10 @@
                 @input="changeCondition"
               />
             </div>
+            <ErrorMessage name="test_date" class="text-red-500 absolute text-sm left-3 top-40" />
             <div v-if="had_antibody_test === 'false'">
               <label for="covid_sickness_date" class="font-bold w-full">
-                თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
+                მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
               </label>
               <Field
                 id="covid_sickness_date"
@@ -145,14 +147,13 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/covidCondition.vue'
+import Animation from '../components/CovidConditionAnimation.vue'
+
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer,
     Animation
   },
 
@@ -176,6 +177,13 @@ export default {
 
     number() {
       return this.$store.getters['inputs_covid_condition/number']
+    },
+    isRequiredDate() {
+      if (this.test_date !== '') {
+        return 'required_date'
+      } else {
+        return
+      }
     },
 
     allInputs() {

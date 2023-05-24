@@ -153,7 +153,9 @@
             :value="tell_us_your_opinion_about_us"
           />
           <div class="flex justify-end">
-            <button class="bg-darkBlue px-5 py-3 rounded-[42px] text-white text-sm font-semibold">
+            <button
+              class="bg-darkBlue px-5 py-3 rounded-[42px] text-white text-sm font-semibold z-[99]"
+            >
               დასრულება
             </button>
           </div>
@@ -163,7 +165,7 @@
           </div>
         </Form>
         <div class="mt-20">
-          <div class="w-[703px] fixed top-200 left-[1100px]">
+          <div class="w-[703px] fixed top-200 left-[900px] z-[10]">
             <img src="@/assets/images/bike2.svg" alt="animation" />
           </div>
           <Animation />
@@ -175,9 +177,8 @@
 
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/suggestions.vue'
-import TextArea from '../components/textarea.vue'
+import Animation from '../components/TheSuggestions.vue'
+import TextArea from '../components/TheTextarea.vue'
 import RadioButton from '../components/RadioInput.vue'
 import axios from 'axios'
 export default {
@@ -185,7 +186,6 @@ export default {
     Form,
     Field,
     ErrorMessage,
-    ImageContainer,
     Animation,
     TextArea,
     RadioButton

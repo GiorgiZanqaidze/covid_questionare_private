@@ -3,7 +3,7 @@
     <img
       src="/src/assets/images/heart_logo.svg"
       v-if="showBox"
-      class="fixed left-[1200px] top-[300px] h-[172px] w-[194px] opacity-70"
+      class="fixed left-[1000px] top-[300px] h-[172px] w-[194px] opacity-70"
   /></transition>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   width: 60px;
   height: 60px;
   top: 30px;
-  left: 1200px;
+  left: 1000px;
   opacity: 0;
 }
 

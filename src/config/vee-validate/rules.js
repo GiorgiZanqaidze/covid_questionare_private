@@ -1,19 +1,7 @@
-// ===============================================================================================
-// ===============================================================================================
-// strategy #1
-//                              Vee-Validate & @vee-validate/rules
-//  if you need few rules, and want to declare them in more readable way, it's the best approach
-// ===============================================================================================
-// ===============================================================================================
-import { defineRule } from 'vee-validate' // npm install vee-validate --save
-import { required, email, min, alpha } from '@vee-validate/rules' // npm install @vee-validate/rules
-
-defineRule('required', required)
-defineRule('email', email)
-defineRule('min', min)
+import { defineRule } from 'vee-validate'
 
 defineRule('required_date', (value) => {
-  if (!/^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/\d{2}$/.test(value)) {
+  if (!/^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(value)) {
     return 'თარიღის ველი უნდა აკმაყოფილებდეს ფორმატს'
   }
   return true

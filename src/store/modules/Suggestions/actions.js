@@ -1,4 +1,6 @@
 import axios from 'axios'
+import postCovidData from '../../../services/postService'
+
 export default {
   saveData(context, data) {
     const formData = {
@@ -13,7 +15,7 @@ export default {
     context.commit('saveData', formData)
   },
 
-  postData(context) {
+  postData() {
     const suggestions = JSON.parse(localStorage.getItem('Suggestions'))
     const privateInfo = JSON.parse(localStorage.getItem('IdentifyData'))
     const vaccineCondition = JSON.parse(localStorage.getItem('VaccineCondition'))
@@ -22,8 +24,8 @@ export default {
     const allInputs = {
       ...privateInfo,
       antibodies: {
-        test_date: vaccineCondition.test_date,
-        number: vaccineCondition.number
+        test_date: covidCondition.test_date,
+        number: covidCondition.number
       },
       had_vaccine: JSON.parse(vaccineCondition.had_vaccine),
       vaccination_stage: vaccineCondition.vaccination_stage,
@@ -32,25 +34,6 @@ export default {
       ...suggestions
     }
 
-    axios
-      .post(
-        'https://covid19.devtest.ge/api/create',
-        {
-          ...allInputs
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      )
-      .then((response) => {
-        if (response.status !== 201) {
-          return Error(response.status)
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    postCovidData(allInputs)
   }
 }

@@ -6,8 +6,8 @@ import router from './router'
 import BaseWrapper from './components/BaseWrapper.vue'
 import FormHeader from './components/FormHeader.vue'
 import RequiredInputsSign from './components/RequiredInputsSign.vue'
-import RouterLink from './components/routerLink.vue'
-import Button from './components/button.vue'
+import RouterLink from './components/RouterLink.vue'
+import Button from './components/TheButton.vue'
 
 import './config/vee-validate/rules'
 

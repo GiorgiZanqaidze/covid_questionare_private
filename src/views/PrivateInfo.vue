@@ -11,6 +11,7 @@
             type="text"
             placeholder="იოსებ"
             v-model="first_name"
+            :value="first_name"
             @save-data="changeInput"
             rules="required|min_length_name:3|alpha_name|max_length_name:256"
           ></input-field>
@@ -22,6 +23,7 @@
             type="text"
             placeholder="ჯუღაშვილი"
             v-model="last_name"
+            :value="last_name"
             @save-data="changeInput"
             rules="required|min_length_surname:3|alpha_surname|max_length_surname:256"
           ></input-field>
@@ -33,6 +35,7 @@
             type="text"
             placeholder="fbi@redberry.ge"
             v-model="email"
+            :value="email"
             @save-data="changeInput"
             rules="required|email|redberry_email"
           ></input-field>
@@ -56,14 +59,12 @@
 <script>
 import { Form } from 'vee-validate'
 import InputField from '../components/InputField.vue'
-import ImageContainer from '../components/ImageContainer.vue'
-import Animation from '../components/privateInfo.vue'
+import Animation from '../components/PrivateInfoAnimation.vue'
 
 export default {
   components: {
     Form,
     InputField,
-    ImageContainer,
     Animation
   },
 

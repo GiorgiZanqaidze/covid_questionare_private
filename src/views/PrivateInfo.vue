@@ -58,8 +58,8 @@
 
 <script>
 import { Form } from 'vee-validate'
-import InputField from '../components/TheInputField.vue'
-import Animation from '../components/ThePrivateInfo.vue'
+import InputField from '../components/InputField.vue'
+import Animation from '../components/PrivateInfoAnimation.vue'
 
 export default {
   components: {

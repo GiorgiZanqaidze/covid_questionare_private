@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Animation from '../components/TheStartQuery.vue'
+import Animation from '../components/StartQueryAnimation.vue'
 export default {
   components: {
     Animation

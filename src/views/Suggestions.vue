@@ -179,7 +179,7 @@
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import Animation from '../components/TheSuggestions.vue'
 import TextArea from '../components/TheTextarea.vue'
-import RadioButton from '../components/TheRadioInput.vue'
+import RadioButton from '../components/RadioInput.vue'
 import axios from 'axios'
 export default {
   components: {

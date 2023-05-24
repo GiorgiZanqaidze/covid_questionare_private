@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Animation from '../components/TheThankYou.vue'
+import Animation from '../components/ThankYouAnimation.vue'
 export default {
   components: {
     Animation

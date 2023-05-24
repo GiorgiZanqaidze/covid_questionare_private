@@ -165,7 +165,7 @@
           </div>
         </Form>
         <div class="mt-20">
-          <div class="w-[703px] fixed top-200 left-[900px] z-[10]">
+          <div class="w-[703px] fixed top-[200px] left-[1000px] z-[10]">
             <img src="@/assets/images/bike2.svg" alt="animation" />
           </div>
           <Animation />

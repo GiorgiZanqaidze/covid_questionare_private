@@ -10,14 +10,14 @@
           @mouseover="mouseOverText"
           @mouseleave="mouseLeaveText"
           to="/identify"
-          class="text-3xl text-center leading-9 font-semibold inline-block absolute bottom-[130px] z-20"
+          class="text-3xl text-center leading-9 font-semibold inline-block absolute bottom-[100px] z-20"
           >კითხვარის დაწყება</RouterLink
         >
       </transition>
       <RouterLink
         v-if="showText && mouseOver"
         to="/identify"
-        class="text-3xl text-center leading-9 inline-block absolute left-2 bottom-[129px] z-0"
+        class="text-3xl text-center leading-9 font-semibold inline-block absolute left-2 bottom-[98px] z-0"
         >კითხვარის დაწყება</RouterLink
       >
     </div>
@@ -66,7 +66,7 @@ export default {
 }
 
 .text-enter-to {
-  bottom: 130px;
+  bottom: 100px;
 }
 
 .logo-enter-active {

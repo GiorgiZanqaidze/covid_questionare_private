@@ -2,6 +2,11 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
+    screens: {
+      sm: '700px',
+      md: '1200px',
+      lg: '1600px'
+    },
     fontFamily: {
       arial: ['arial']
     },

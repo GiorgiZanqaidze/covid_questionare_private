@@ -6,7 +6,6 @@
         <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">გაქვს გადატანილი Covid-19?*</h1>
-
             <div class="inline-block ml-3">
               <Field
                 rules="required"
@@ -135,7 +134,7 @@
           </div>
         </Form>
         <div>
-          <div class="w-[870px]">
+          <div class="max-w-[870px]">
             <img src="@/assets/images/vaccinate2.svg" alt="animation" />
           </div>
           <Animation />

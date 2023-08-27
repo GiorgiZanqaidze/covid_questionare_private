@@ -2,8 +2,8 @@
   <base-wrapper>
     <div class="my-12">
       <form-header :page="1"></form-header>
-      <div class="flex relative">
-        <Form @submit="onSubmit" class="md:w-2/5 w-full flex flex-col mt-12 gap-12">
+      <div class="flex justify-between relative">
+        <Form @submit="onSubmit" class="md:w-2/3 w-full flex flex-col mt-12 gap-12">
           <input-field
             label="სახელი"
             name="first_name"

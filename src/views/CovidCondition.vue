@@ -2,8 +2,8 @@
   <base-wrapper>
     <div class="my-12">
       <form-header :page="2"></form-header>
-      <div class="flex justify-between relative">
-        <Form @submit="onSubmit" class="w-[650px] flex flex-col mt-12 gap-12">
+      <div class="flex justify-between relative md:max-w-[1524px] max-w-[400px]">
+        <Form @submit="onSubmit" class="md:w-2/3 w-full flex flex-col mt-12 gap-12">
           <div class="flex flex-col w-3/4 gap-2 relative">
             <h1 class="text-base font-bold tracking-wide">გაქვს გადატანილი Covid-19?*</h1>
             <div class="inline-block ml-3">
@@ -82,8 +82,8 @@
               class="text-red-500 absolute text-sm left-3 top-32"
             />
           </div>
-          <div class="flex flex-col w-4/5 gap-2 relative box-border" v-if="isCovidTrue">
-            <div v-if="had_antibody_test === 'true'">
+          <div class="flex flex-col w-3/4 gap-2 relative box-border" v-if="isCovidTrue">
+            <div v-if="had_antibody_test === 'true'" class="w-full">
               <label for="test_date" class="font-bold w-full">
                 თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*
               </label>
@@ -108,7 +108,7 @@
               />
             </div>
             <ErrorMessage name="test_date" class="text-red-500 absolute text-sm left-3 top-40" />
-            <div v-if="had_antibody_test === 'false'">
+            <div v-if="had_antibody_test === 'false'" class="w-full">
               <label for="covid_sickness_date" class="font-bold w-full">
                 მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19**
               </label>
@@ -128,16 +128,23 @@
               />
             </div>
           </div>
-          <div class="absolute bottom-0 left-1/2 flex gap-32" style="transform: translateX(-50%)">
+          <div
+            class="absolute md:bottom-0 bottom-[-5rem] left-1/2 flex gap-32"
+            style="transform: translateX(-50%)"
+          >
             <router-arrow-link link="identify"></router-arrow-link>
             <submit-button></submit-button>
           </div>
         </Form>
-        <div>
-          <div class="max-w-[870px]">
-            <img src="@/assets/images/vaccinate2.svg" alt="animation" />
+        <div class="hidden md:block">
+          <div class="relative">
+            <img
+              src="@/assets/images/vaccinate2.svg"
+              alt="animation"
+              class="lg:min-w-[50rem] max-w-[40rem]"
+            />
+            <Animation />
           </div>
-          <Animation />
         </div>
       </div>
     </div>

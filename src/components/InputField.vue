@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-3/4 gap-2 relative">
+  <div class="flex flex-col md:w-3/4 gap-2 relative">
     <label v-if="label" :for="name" class="text-base font-bold tracking-wide">{{ label }}*</label>
     <Field
       :name="name"

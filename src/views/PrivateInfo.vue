@@ -2,8 +2,8 @@
   <base-wrapper>
     <div class="my-12">
       <form-header :page="1"></form-header>
-      <div class="flex relative">
-        <Form @submit="onSubmit" class="w-2/5 flex flex-col mt-12 gap-12">
+      <div class="flex justify-between relative">
+        <Form @submit="onSubmit" class="md:w-2/3 w-full flex flex-col mt-12 gap-12">
           <input-field
             label="სახელი"
             name="first_name"
@@ -41,15 +41,22 @@
           ></input-field>
 
           <required-inputs></required-inputs>
-          <div class="absolute bottom-0 left-1/2 flex" style="transform: translateX(-50%)">
+          <div
+            class="absolute bottom-[-3rem] md:bottom-[-2rem] left-1/2 flex"
+            style="transform: translateX(-50%)"
+          >
             <submit-button></submit-button>
           </div>
         </Form>
-        <div>
-          <div>
-            <img src="@/assets/images/identifyImage.svg" alt="animation" />
+        <div class="hidden md:block">
+          <div class="relative">
+            <img
+              src="@/assets/images/identifyImage.svg"
+              alt="animation"
+              class="lg:min-w-[50rem] max-w-[40rem]"
+            />
+            <Animation />
           </div>
-          <Animation />
         </div>
       </div>
     </div>

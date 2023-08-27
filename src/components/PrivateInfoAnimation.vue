@@ -2,13 +2,13 @@
   <transition name="box" v-if="prevPage === '/'">
     <div
       v-if="showBox"
-      class="bg-darkYellow absolute top-[230px] left-[750px] h-[75px] w-[622px] opacity-70"
+      class="bg-darkYellow absolute sm:top-[150px] lg:top-[200px] left-[100px] h-[75px] md:w-[450px] lg:w-[622px] opacity-70"
     ></div>
   </transition>
-  <transition name="box_2" v-if="prevPage === '/covid-condition'">
+  <transition name="box_2" v-else>
     <div
       v-if="showBox"
-      class="bg-darkYellow absolute top-[230px] left-[750px] h-[75px] w-[622px] opacity-70"
+      class="bg-darkYellow absolute sm:top-[150px] lg:top-[200px] left-[100px] h-[75px] md:w-[450px] lg:w-[622px] opacity-70"
     ></div>
   </transition>
 </template>
@@ -49,12 +49,40 @@ export default {
   opacity: 0;
 }
 
-.box-enter-to,
+.box-enter-to {
+  top: 230px;
+  width: 622px;
+  height: 75px;
+  opacity: 0.7;
+  left: 100px;
+}
+
 .box_2-enter-to {
   top: 230px;
   width: 622px;
   height: 75px;
   opacity: 0.7;
-  left: 750px;
+  left: 100px;
+}
+
+@media (min-width: 1200px) {
+  .box-enter-to {
+    top: 150px;
+    width: 450px;
+  }
+  .box_2-enter-to {
+    top: 150px;
+    width: 450px;
+  }
+}
+@media (min-width: 1600px) {
+  .box-enter-to {
+    top: 200px;
+    width: 622px;
+  }
+  .box_2-enter-to {
+    top: 200px;
+    width: 622px;
+  }
 }
 </style>
